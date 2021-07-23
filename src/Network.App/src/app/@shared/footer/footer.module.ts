@@ -1,15 +1,17 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { NotFoundComponent } from './not-found/not-found.component';
-
+import { FooterComponent } from './footer.component';
 
 
 @NgModule({
   declarations: [
-    NotFoundComponent
+    FooterComponent
+  ],
+  exports: [
+    FooterComponent
   ],
   imports: [
     CommonModule
   ]
 })
-export class NotFoundModule { }
+export class FooterModule { }
