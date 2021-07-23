@@ -5,9 +5,9 @@ import { Route } from '@shared/shell';
 const routes: Routes = [
   Route.withShell([
     { path: '', redirectTo: 'landing', pathMatch: 'full' },
-    { path: 'landing', loadChildren: () => import('./landing/landing.module').then(m => m.LandingModule) }
-  ]),
-  { path: 'landing', loadChildren: () => import('./landing/landing.module').then(m => m.LandingModule) }
+    { path: 'landing', loadChildren: () => import('./landing/landing.module').then(m => m.LandingModule) },
+    { path: 'profile', loadChildren: () => import('./profile/profile.module').then(m => m.ProfileModule) }
+  ])
 ];
 
 @NgModule({

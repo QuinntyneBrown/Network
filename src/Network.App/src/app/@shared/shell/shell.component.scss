@@ -2,6 +2,9 @@
   main {
     min-height: 100vh;
     display: block;
+    max-width: 1500px;
+    margin:0 auto;
+    padding:60px;
   }
 
   .mat-drawer__close-button-container {

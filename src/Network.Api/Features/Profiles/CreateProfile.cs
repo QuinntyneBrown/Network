@@ -1,10 +1,10 @@
 using FluentValidation;
 using MediatR;
-using System.Threading;
-using System.Threading.Tasks;
-using Network.Api.Models;
 using Network.Api.Core;
 using Network.Api.Interfaces;
+using Network.Api.Models;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace Network.Api.Features
 {
@@ -17,7 +17,6 @@ namespace Network.Api.Features
                 RuleFor(request => request.Profile).NotNull();
                 RuleFor(request => request.Profile).SetValidator(new ProfileValidator());
             }
-        
         }
 
         public class Request: IRequest<Response>
@@ -39,13 +38,13 @@ namespace Network.Api.Features
         
             public async Task<Response> Handle(Request request, CancellationToken cancellationToken)
             {
-                var profile = new Profile();
+                var profile = new Profile(request.Profile.Firstname, request.Profile.Lastname, request.Profile.Email);
                 
                 _context.Profiles.Add(profile);
                 
                 await _context.SaveChangesAsync(cancellationToken);
                 
-                return new Response()
+                return new ()
                 {
                     Profile = profile.ToDto()
                 };

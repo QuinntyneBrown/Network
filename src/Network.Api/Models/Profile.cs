@@ -12,5 +12,17 @@ namespace Network.Api.Models
         public string PhoneNumber { get; private set; }
         public List<ProfileNote> ProfileNotes { get; set; } = new();
         public List<Position> Experience { get; set; } = new();
+
+        private Profile()
+        {
+
+        }
+
+        public Profile(string firstname, string lastname, string email)
+        {
+            Firstname = firstname;
+            Lastname = lastname;
+            Email = email;
+        }
     }
 }

@@ -1,4 +1,3 @@
-using System;
 using Network.Api.Models;
 
 namespace Network.Api.Features
@@ -9,9 +8,11 @@ namespace Network.Api.Features
         {
             return new ()
             {
-                ProfileId = profile.ProfileId
+                ProfileId = profile.ProfileId,
+                Firstname = profile.Firstname,
+                Lastname = profile.Lastname,
+                Email = profile.Email
             };
-        }
-        
+        }        
     }
 }
