@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
-import { ProfileService } from '@api';
+import { Router } from '@angular/router';
+import { Profile, ProfileService } from '@api';
 import { map } from 'rxjs/operators';
 
 @Component({
@@ -13,15 +14,20 @@ export class LandingComponent {
   public readonly vm$ = this._profileService
   .get()
   .pipe(
-    map(profiles => ({ profiles: new MatTableDataSource(profiles) }))
+    map(profiles => {
+      return {
+        dataSource: new MatTableDataSource(profiles),
+        displayedColumns: ["firstname", "lastname", "actions"]
+      };
+    })
   );
 
-  public readonly displayedColumns = ["firstname", "lastname", "actions"];
-
   constructor(
-    private readonly _profileService: ProfileService
-  ) {
+    private readonly _profileService: ProfileService,
+    private readonly _router: Router
+  ) { }
 
+  public handleEditClick(profile: Profile) {
+    this._router.navigate(["profile",profile.profileId]);
   }
-
 }

@@ -11,7 +11,8 @@ namespace Network.Api.Features
                 ProfileId = profile.ProfileId,
                 Firstname = profile.Firstname,
                 Lastname = profile.Lastname,
-                Email = profile.Email
+                Email = profile.Email,
+                GithubProfile = profile.GithubProfile
             };
         }        
     }

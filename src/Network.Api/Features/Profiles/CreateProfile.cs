@@ -38,7 +38,11 @@ namespace Network.Api.Features
         
             public async Task<Response> Handle(Request request, CancellationToken cancellationToken)
             {
-                var profile = new Profile(request.Profile.Firstname, request.Profile.Lastname, request.Profile.Email);
+                var profile = new Profile(
+                    request.Profile.Firstname, 
+                    request.Profile.Lastname, 
+                    request.Profile.Email,
+                    request.Profile.GithubProfile);
                 
                 _context.Profiles.Add(profile);
                 

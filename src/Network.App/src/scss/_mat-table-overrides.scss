@@ -1,16 +1,28 @@
 .g-table {
   width: 100%;
   border: 1px solid #E5E5E5;
+  background-color: rgba(0,0,0,0);
+  border-radius: 10px;
 
-  tbody, thead {
+  tbody[role="rowgroup"], thead[role="rowgroup"] {
+    background-color: rgba(0,0,0,0);
     .mat-row.cdk-row, .mat-header-row.cdk-header-row  {
       display: grid;
       grid-template-columns: 1fr 1fr 100px;
+      border-radius: 10px;
     }
 
     th, td {
       display: grid;
       place-items: center start;
+      border:none;
+      border-bottom: 1px solid #E5E5E5;
+    }
+
+    tr.mat-row.cdk-row:last-of-type {
+      td {
+        border:none;
+      }
     }
   }
 }

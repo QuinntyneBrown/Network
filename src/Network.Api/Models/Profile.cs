@@ -9,6 +9,7 @@ namespace Network.Api.Models
         public string Firstname { get; private set; }
         public string Lastname { get; private set; }
         public string Email { get; private set; }
+        public string GithubProfile { get; private set; }
         public string PhoneNumber { get; private set; }
         public List<ProfileNote> ProfileNotes { get; set; } = new();
         public List<Position> Experience { get; set; } = new();
@@ -18,11 +19,12 @@ namespace Network.Api.Models
 
         }
 
-        public Profile(string firstname, string lastname, string email)
+        public Profile(string firstname, string lastname, string email, string githubProfile)
         {
             Firstname = firstname;
             Lastname = lastname;
             Email = email;
+            GithubProfile = githubProfile;
         }
     }
 }

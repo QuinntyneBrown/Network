@@ -1,1 +1,19 @@
-<p>profile works!</p>
+<ng-container *ngIf="vm$ | async as vm">
+
+  <app-bento-box>
+
+    <div main>
+      <h1>{{ vm.profile.firstname }}  {{ vm.profile.lastname }}</h1>
+    </div>
+
+    <div cell>
+      <p>Email: {{ vm.profile.email }}</p>
+    </div>
+
+    <div cell>
+      <p>Github Profile: {{ vm.profile.githubProfile }}</p>
+    </div>
+
+  </app-bento-box>
+
+</ng-container>
