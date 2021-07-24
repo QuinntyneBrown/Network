@@ -8,7 +8,7 @@ namespace Network.Api.Models
         public Guid ProfileId { get; private set; }
         public string Firstname { get; private set; }
         public string Lastname { get; private set; }
-        public Guid AvatarDigitalAssetId { get; private set; }
+        public Guid? AvatarDigitalAssetId { get; private set; }
         public string Email { get; private set; }
         public string GithubProfile { get; private set; }
         public string LinkedInProfile { get; private set; }
@@ -29,7 +29,7 @@ namespace Network.Api.Models
             GithubProfile = githubProfile;
         }
 
-        public Profile SetAvatarDigitalAssetId(Guid id)
+        public Profile SetAvatarDigitalAssetId(Guid? id)
         {
             AvatarDigitalAssetId = id;
             return this;

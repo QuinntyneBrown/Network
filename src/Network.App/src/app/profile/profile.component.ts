@@ -1,9 +1,15 @@
 import { Component } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { ProfileService } from '@api';
-import { Subject } from 'rxjs';
+import { NavigationService } from '@core';
 import { map, startWith, switchMap, tap } from 'rxjs/operators';
+
+export enum ProfileState {
+  Edit,
+  Create,
+  View
+}
 
 @Component({
   selector: 'app-profile',
@@ -12,9 +18,19 @@ import { map, startWith, switchMap, tap } from 'rxjs/operators';
 })
 export class ProfileComponent  {
 
-  private readonly _destroyed: Subject<void> = new Subject();
+  public readonly avatarFormControl = new FormControl(null, []);
 
-  public avatarFormControl = new FormControl(null,[]);
+  public form: FormGroup = new FormGroup({
+    firstname: new FormControl(null, []),
+    lastnmae: new FormControl(null, []),
+    email: new FormControl(null, []),
+    githubProfile: new FormControl(null, []),
+    linkedInProfile: new FormControl(null, [])
+  });
+
+  public state: ProfileState = ProfileState.View;
+
+  public ProfileState: typeof ProfileState = ProfileState;
 
   public readonly vm$ = this._activatedRoute.paramMap
   .pipe(
@@ -36,8 +52,20 @@ export class ProfileComponent  {
 
   constructor(
     private readonly _activatedRoute: ActivatedRoute,
-    private readonly _profileService: ProfileService
+    private readonly _profileService: ProfileService,
+    private readonly _navigationService: NavigationService
   ) { }
 
+  public handleEditClick() {
+    this.state = ProfileState.Edit;
+  }
+
+  public handleSaveClick() {
+    this.state = ProfileState.View;
+  }
+
+  public back() {
+    this._navigationService.back();
+  }
 
 }
