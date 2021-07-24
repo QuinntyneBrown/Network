@@ -7,11 +7,11 @@ namespace Network.Api.Features
     {
         public static ProfileNoteDto ToDto(this ProfileNote profileNote)
         {
-            return new ()
+            return new()
             {
                 ProfileNoteId = profileNote.ProfileNoteId
             };
         }
-        
+
     }
 }

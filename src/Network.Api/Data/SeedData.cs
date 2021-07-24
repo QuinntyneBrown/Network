@@ -21,7 +21,7 @@ namespace Network.Api.Data
                 .Search("Lastname", "Brown")
                 .SingleOrDefault();
 
-            if(profile == null)
+            if (profile == null)
             {
                 profile = new Profile("Quinntyne", "Brown", "quinntynebrown@gmail.com", "https://github.com/QuinntyneBrown");
                 context.Profiles.Add(profile);

@@ -11,7 +11,9 @@
   "applicationDirectory": "C:\\Projects\\Network\\src\\Network.Api",
   "infrastructureDirectory": "C:\\Projects\\Network\\src\\Network.Api",
   "apiDirectory": "C:\\Projects\\Network\\src\\Network.Api",
-  "appDirectories": [ "C:\\Projects\\Network\\src\\Network.App" ],
+  "appDirectories": [
+    "C:\\Projects\\Network\\src\\Network.App"
+  ],
   "buildingBlocksCoreNamespace": "BuildingBlocks.Core",
   "buildingBlocksEventStoreNamespace": "BuildingBlocks.EventStore",
   "store": null,
@@ -31,6 +33,7 @@
     "Organization",
     "Location",
     "Note",
-    "ProfileNote"
+    "ProfileNote",
+    "DigitalAsset"
   ]
 }

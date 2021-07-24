@@ -6,14 +6,15 @@ namespace Network.Api.Features
     {
         public static ProfileDto ToDto(this Profile profile)
         {
-            return new ()
+            return new()
             {
                 ProfileId = profile.ProfileId,
                 Firstname = profile.Firstname,
                 Lastname = profile.Lastname,
                 Email = profile.Email,
-                GithubProfile = profile.GithubProfile
+                GithubProfile = profile.GithubProfile,
+                LinkedInProfile = profile.LinkedInProfile
             };
-        }        
+        }
     }
 }

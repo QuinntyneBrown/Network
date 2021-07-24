@@ -7,11 +7,11 @@ namespace Network.Api.Features
     {
         public static NoteDto ToDto(this Note note)
         {
-            return new ()
+            return new()
             {
                 NoteId = note.NoteId
             };
         }
-        
+
     }
 }

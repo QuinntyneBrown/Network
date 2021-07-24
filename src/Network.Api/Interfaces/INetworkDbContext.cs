@@ -14,7 +14,8 @@ namespace Network.Api.Interfaces
         DbSet<Location> Locations { get; }
         DbSet<Note> Notes { get; }
         DbSet<ProfileNote> ProfileNotes { get; }
+        DbSet<DigitalAsset> DigitalAssets { get; }
         Task<int> SaveChangesAsync(CancellationToken cancellationToken);
-        
+
     }
 }

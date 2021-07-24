@@ -7,11 +7,11 @@ namespace Network.Api.Features
     {
         public static LocationDto ToDto(this Location location)
         {
-            return new ()
+            return new()
             {
                 LocationId = location.LocationId
             };
         }
-        
+
     }
 }

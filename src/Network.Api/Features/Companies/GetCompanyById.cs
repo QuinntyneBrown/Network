@@ -10,30 +10,31 @@ namespace Network.Api.Features
 {
     public class GetCompanyById
     {
-        public class Request: IRequest<Response>
+        public class Request : IRequest<Response>
         {
             public Guid CompanyId { get; set; }
         }
 
-        public class Response: ResponseBase
+        public class Response : ResponseBase
         {
             public CompanyDto Company { get; set; }
         }
 
-        public class Handler: IRequestHandler<Request, Response>
+        public class Handler : IRequestHandler<Request, Response>
         {
             private readonly INetworkDbContext _context;
-        
+
             public Handler(INetworkDbContext context)
                 => _context = context;
-        
+
             public async Task<Response> Handle(Request request, CancellationToken cancellationToken)
             {
-                return new () {
+                return new()
+                {
                     Company = (await _context.Companies.SingleOrDefaultAsync(x => x.CompanyId == request.CompanyId)).ToDto()
                 };
             }
-            
+
         }
     }
 }

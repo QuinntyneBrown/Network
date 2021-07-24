@@ -1,23 +1,48 @@
-.g-table {
+table.g-table.mat-table {
   width: 100%;
-  border: 1px solid #E5E5E5;
   background-color: rgba(0,0,0,0);
-  border-radius: 10px;
+  box-sizing: border-box;
 
-  tbody[role="rowgroup"], thead[role="rowgroup"] {
+  thead[role="rowgroup"] {
     background-color: rgba(0,0,0,0);
-    .mat-row.cdk-row, .mat-header-row.cdk-header-row  {
+    .mat-header-row.cdk-header-row {
+      background-color: rgba(0,0,0,0);
       display: grid;
-      grid-template-columns: 1fr 1fr 100px;
-      border-radius: 10px;
+      grid-template-columns: 1fr 1fr 40px;
+      th {
+        background-color: rgba(0,0,0,0);
+      }
     }
 
-    th, td {
+    th {
+      display: grid;
+      place-items: center start;
+      border:none;
+      background-color: rgba(0,0,0,0);
+    }
+  }
+
+  tbody[role="rowgroup"] {
+    background-color: white;
+    border:1px solid #E5E5E5;
+    border-radius: 10px;
+    display: block;
+
+    .mat-row.cdk-row  {
+      display: grid;
+      grid-template-columns: 1fr 1fr 40px;
+      border-radius: 10px;
+      box-sizing: border-box;
+      padding:0;
+    }
+
+    td {
       display: grid;
       place-items: center start;
       border:none;
       border-bottom: 1px solid #E5E5E5;
     }
+
 
     tr.mat-row.cdk-row:last-of-type {
       td {
