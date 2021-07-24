@@ -1,14 +1,13 @@
 using FluentValidation;
 using MediatR;
+using Microsoft.EntityFrameworkCore;
+using Network.Api.Interfaces;
 using System.Threading;
 using System.Threading.Tasks;
-using Network.Api.Core;
-using Network.Api.Interfaces;
-using Microsoft.EntityFrameworkCore;
 
 namespace Network.Api.Features
 {
-    public class UpdateProfile
+    public class UpdateAvatarDigitalAssetId
     {
         public class Validator : AbstractValidator<Request>
         {
@@ -19,12 +18,11 @@ namespace Network.Api.Features
             }
         }
 
-        public class Request : IRequest<Response>
-        {
-            public ProfileDto Profile { get; set; }
+        public class Request : IRequest<Response> { 
+            public ProfileDto Profile { get; set; }        
         }
 
-        public class Response : ResponseBase
+        public class Response
         {
             public ProfileDto Profile { get; set; }
         }
@@ -33,29 +31,23 @@ namespace Network.Api.Features
         {
             private readonly INetworkDbContext _context;
 
-            public Handler(INetworkDbContext context)
-                => _context = context;
+            public Handler(INetworkDbContext context){
+                _context = context;
+            }
 
-            public async Task<Response> Handle(Request request, CancellationToken cancellationToken)
-            {
+            public async Task<Response> Handle(Request request, CancellationToken cancellationToken) {
+
                 var profile = await _context.Profiles.SingleAsync(x => x.ProfileId == request.Profile.ProfileId);
 
-                profile.Update(
-                    request.Profile.Firstname,
-                    request.Profile.Lastname,
-                    request.Profile.Email,
-                    request.Profile.GithubProfile,
-                    request.Profile.LinkedInProfile,
-                    request.Profile.AvatarDigitalAssetId);
+                profile.SetAvatarDigitalAssetId(request.Profile.AvatarDigitalAssetId);
 
                 await _context.SaveChangesAsync(cancellationToken);
 
-                return new ()
+                return new()
                 {
                     Profile = profile.ToDto()
                 };
             }
-
         }
     }
 }

@@ -44,7 +44,11 @@ export class ProfileService implements IPagableService<Profile> {
   public create(options: { profile: Profile }): Observable<{ profile: Profile }> {
     return this._client.post<{ profile: Profile }>(`${this._baseUrl}api/profile`, { profile: options.profile });
   }
-  
+
+  public updateAvatar(options: { profile: Profile }): Observable<{ profile: Profile }> {
+    return this._client.put<{ profile: Profile }>(`${this._baseUrl}api/profile/avatar`, { profile: options.profile });
+  }
+
   public update(options: { profile: Profile }): Observable<{ profile: Profile }> {
     return this._client.put<{ profile: Profile }>(`${this._baseUrl}api/profile`, { profile: options.profile });
   }

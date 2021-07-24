@@ -31,6 +31,17 @@ namespace Network.Api.Models
             GithubProfile = githubProfile;
         }
 
+        public Profile Update(string firstname, string lastname, string email, string githubProfile, string linkedInProfile, Guid? avatarDigitalAssetId)
+        {
+            Firstname = firstname;
+            Lastname = lastname;
+            Email = email;
+            LinkedInProfile = linkedInProfile;
+            GithubProfile = githubProfile;
+            AvatarDigitalAssetId = avatarDigitalAssetId;
+            return this;
+        }
+
         public Profile SetAvatarDigitalAssetId(Guid? id)
         {
             AvatarDigitalAssetId = id;

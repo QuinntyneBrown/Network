@@ -31,7 +31,9 @@ namespace Network.Api.Features
             {
                 return new()
                 {
-                    Profile = (await _context.Profiles.SingleOrDefaultAsync(x => x.ProfileId == request.ProfileId)).ToDto()
+                    Profile = (await _context.Profiles
+                    .Include(x => x.Experience)
+                    .SingleOrDefaultAsync(x => x.ProfileId == request.ProfileId)).ToDto()
                 };
             }
 

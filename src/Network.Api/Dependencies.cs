@@ -55,7 +55,8 @@ namespace Network.Api
 
             services.AddDbContext<NetworkDbContext>(options =>
             {
-                options.UseInMemoryDatabase(nameof(Network.Api))
+                options.UseSqlServer(configuration["Data:DefaultConnection:ConnectionString"],
+                    builder => builder.MigrationsAssembly("Network.Api").EnableRetryOnFailure())
                 .LogTo(Console.WriteLine)
                 .EnableSensitiveDataLogging();
             });

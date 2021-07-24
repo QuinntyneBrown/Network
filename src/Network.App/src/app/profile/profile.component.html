@@ -6,7 +6,7 @@
 
       <app-digital-asset-upload icon="photo_camera" [formControl]="vm.avatarFormControl"></app-digital-asset-upload>
 
-      <h1>{{ vm.profile.firstname }}  {{ vm.profile.lastname }}</h1>
+      <h1 class="g-title">{{ vm.profile.firstname }}  {{ vm.profile.lastname }}</h1>
 
       <div class="g-actions">
         <button mat-stroked-button (click)="handleEditClick(vm)">
@@ -30,7 +30,7 @@
 
   <div *ngIf="vm.state == ProfileState.Edit || vm.state == ProfileState.Create" style="text-align: center;">
 
-    <app-digital-asset-upload icon="photo_camera" [formControl]="vm.avatarFormControl" *ngIf="vm.state != ProfileState.Create"></app-digital-asset-upload>
+    <app-digital-asset-upload icon="photo_camera" [formControl]="vm.avatarFormControl"></app-digital-asset-upload>
 
     <h1 *ngIf="vm.state == ProfileState.Edit" class="g-title">Profile Details</h1>
 
@@ -66,7 +66,7 @@
 
 
     <div class="g-actions">
-      <button mat-stroked-button (click)="handleSaveClick(vm)">
+      <button mat-stroked-button (click)="handleCancelClick()">
         Cancel
       </button>
 
@@ -76,4 +76,7 @@
     </div>
   </div>
 
+  <app-experience></app-experience>
+
+  <app-notes></app-notes>
 </ng-container>

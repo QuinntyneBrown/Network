@@ -8,6 +8,8 @@ import { DigitalAssetUploadModule } from '@shared/digital-asset-upload/digital-a
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { ExperienceModule } from '@shared/experience';
+import { NotesModule } from '@shared/notes/notes.module';
 
 
 @NgModule({
@@ -22,7 +24,9 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     ReactiveFormsModule,
     MatButtonModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    ExperienceModule,
+    NotesModule
   ]
 })
 export class ProfileModule { }

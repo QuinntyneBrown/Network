@@ -75,7 +75,13 @@ export class ProfileComponent  {
       .pipe(
         switchMap(avatarDigitalAssetId => {
           Object.assign(vm.profile, { avatarDigitalAssetId });
-          return this._profileService.update({ profile: vm.profile });
+          vm.form.patchValue({ avatarDigitalAssetId });
+
+          if(vm.state == ProfileState.Edit || vm.state == ProfileState.View) {
+            return this._profileService.updateAvatar({ profile: vm.profile });
+          }
+
+          return of(null);
         }),
         map(_ => vm),
         startWith(vm)
@@ -92,6 +98,10 @@ export class ProfileComponent  {
 
   public handleEditClick(vm) {
     this._router.navigate(["/","profile","edit", vm.profile.profileId])
+  }
+
+  public handleCancelClick() {
+    this._navigationService.back();
   }
 
   public handleSaveClick(vm) {
