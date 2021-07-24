@@ -39,13 +39,13 @@ namespace Network.Api.Features
 
             public async Task<Response> Handle(Request request, CancellationToken cancellationToken)
             {
-                var position = new Position();
+                var position = new Position(request.Position.Title);
 
                 _context.Positions.Add(position);
 
                 await _context.SaveChangesAsync(cancellationToken);
 
-                return new Response()
+                return new ()
                 {
                     Position = position.ToDto()
                 };

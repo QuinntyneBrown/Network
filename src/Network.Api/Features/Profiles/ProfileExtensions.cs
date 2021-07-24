@@ -1,4 +1,5 @@
 using Network.Api.Models;
+using System.Linq;
 
 namespace Network.Api.Features
 {
@@ -16,8 +17,8 @@ namespace Network.Api.Features
                 GithubProfile = profile.GithubProfile,
                 LinkedInProfile = profile.LinkedInProfile,
                 AvatarDigitalAssetId = profile.AvatarDigitalAssetId,
-                Created = profile.Created
-
+                Created = profile.Created,
+                Experience = profile.Experience?.Select(x => x?.ToDto()).ToList()
             };
         }
     }

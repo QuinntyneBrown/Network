@@ -6,6 +6,7 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { IPagableService } from '@core/ipagable-service';
 import { EntityPage } from '@core/entity-page';
+import { Position } from '@api/models';
 
 @Injectable({
   providedIn: 'root'
@@ -43,6 +44,10 @@ export class ProfileService implements IPagableService<Profile> {
 
   public create(options: { profile: Profile }): Observable<{ profile: Profile }> {
     return this._client.post<{ profile: Profile }>(`${this._baseUrl}api/profile`, { profile: options.profile });
+  }
+
+  public createExperience(options: { profileId: string, position: Position }): Observable<{ profile: Profile }> {
+    return this._client.post<{ profile: Profile }>(`${this._baseUrl}api/profile/experience`, { profileId: options.profileId, position: options.position });
   }
 
   public updateAvatar(options: { profile: Profile }): Observable<{ profile: Profile }> {

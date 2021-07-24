@@ -108,6 +108,9 @@ namespace Network.Api.Migrations
                     b.Property<Guid?>("CompanyId")
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<bool>("IsCurrent")
                         .HasColumnType("bit");
 

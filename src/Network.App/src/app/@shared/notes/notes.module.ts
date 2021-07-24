@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NotesComponent } from './notes.component';
 import { MatButtonModule } from '@angular/material/button';
+import { NoteModalModule } from '@shared/note-modal';
 
 
 
@@ -14,7 +15,8 @@ import { MatButtonModule } from '@angular/material/button';
   ],
   imports: [
     CommonModule,
-    MatButtonModule
+    MatButtonModule,
+    NoteModalModule
   ]
 })
 export class NotesModule { }

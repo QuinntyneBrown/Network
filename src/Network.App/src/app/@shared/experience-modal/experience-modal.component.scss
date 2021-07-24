@@ -1,0 +1,16 @@
+:host {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap:30px;
+
+  button {
+    grid-column: 2;
+  }
+
+  form,
+  .g-actions {
+    grid-column: 1/3;
+
+
+  }
+}

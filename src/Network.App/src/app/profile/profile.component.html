@@ -26,6 +26,16 @@
       <span class="g-field__property">{{ vm.profile.githubProfile }}</span>
     </div>
 
+    <div class="g-field" cell>
+      <label class="g-field__label">LinkedIn Profile</label>
+      <span class="g-field__property">{{ vm.profile.linkedInProfile }}</span>
+    </div>
+
+    <div class="g-field" cell>
+      <label class="g-field__label">Phone</label>
+      <span class="g-field__property">{{ vm.profile.phone }}</span>
+    </div>
+
   </app-bento-box>
 
   <div *ngIf="vm.state == ProfileState.Edit || vm.state == ProfileState.Create" style="text-align: center;">
@@ -76,7 +86,7 @@
     </div>
   </div>
 
-  <app-experience></app-experience>
+  <app-experience [profileId]="vm.profile.profileId"></app-experience>
 
   <app-notes></app-notes>
 </ng-container>

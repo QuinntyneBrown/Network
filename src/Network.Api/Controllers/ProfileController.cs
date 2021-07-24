@@ -46,6 +46,13 @@ namespace Network.Api.Controllers
         public async Task<ActionResult<CreateProfile.Response>> Create([FromBody] CreateProfile.Request request)
             => await _mediator.Send(request);
 
+        [HttpPost("experience", Name = "CreateProfileExperienceRoute")]
+        [ProducesResponseType((int)HttpStatusCode.InternalServerError)]
+        [ProducesResponseType(typeof(ProblemDetails), (int)HttpStatusCode.BadRequest)]
+        [ProducesResponseType(typeof(CreateProfileExperience.Response), (int)HttpStatusCode.OK)]
+        public async Task<ActionResult<CreateProfileExperience.Response>> CreateProfileExperience([FromBody] CreateProfileExperience.Request request)
+            => await _mediator.Send(request);
+
         [HttpGet("page/{pageSize}/{index}", Name = "GetProfilesPageRoute")]
         [ProducesResponseType((int)HttpStatusCode.InternalServerError)]
         [ProducesResponseType(typeof(ProblemDetails), (int)HttpStatusCode.BadRequest)]

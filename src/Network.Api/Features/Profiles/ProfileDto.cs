@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 namespace Network.Api.Features
 {
@@ -13,6 +14,7 @@ namespace Network.Api.Features
         public string GithubProfile { get; set; }
         public string LinkedInProfile { get; set; }
         public DateTime Created { get; set; }
+        public List<PositionDto> Experience { get; set; } = new();
 
     }
 }

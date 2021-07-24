@@ -9,7 +9,7 @@ namespace Network.Api.Features
         {
             return new()
             {
-                CompanyId = company.CompanyId
+                CompanyId = company?.CompanyId
             };
         }
 

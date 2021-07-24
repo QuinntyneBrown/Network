@@ -3,7 +3,8 @@ import { CommonModule } from '@angular/common';
 import { ExperienceComponent } from './experience.component';
 import { PositionModule } from '@shared/position';
 import { MatButtonModule } from '@angular/material/button';
-
+import { ExperienceModalModule } from '@shared/experience-modal';
+import { MatDialogModule } from '@angular/material/dialog';
 
 
 @NgModule({
@@ -16,7 +17,9 @@ import { MatButtonModule } from '@angular/material/button';
   imports: [
     CommonModule,
     PositionModule,
-    MatButtonModule
+    MatButtonModule,
+    ExperienceModalModule,
+    MatDialogModule
   ]
 })
 export class ExperienceModule { }
