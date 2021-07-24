@@ -9,6 +9,7 @@ namespace Network.Api.Features
         public string Lastname { get; set; }
         public Guid? AvatarDigitalAssetId { get; set; }
         public string Email { get; set; }
+        public string Phone { get; set; }
         public string GithubProfile { get; set; }
         public string LinkedInProfile { get; set; }
         public DateTime Created { get; set; }

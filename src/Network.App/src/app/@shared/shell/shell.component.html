@@ -3,7 +3,7 @@
     <mat-drawer #drawer mode="over" class="g-drawer">
     </mat-drawer>
 
-    <app-header></app-header>
+    <app-header (titleClick)="handleTitleClick()" (menuClick)="drawer.open()"></app-header>
     <main>
       <router-outlet></router-outlet>
     </main>

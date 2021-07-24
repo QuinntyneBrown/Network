@@ -1,9 +1,9 @@
 <div class="header-container">
-  <button mat-icon-button>
+  <button mat-icon-button (click)="menuClick.emit()">
     <mat-icon>menu</mat-icon>
   </button>
 
-  <h1>
+  <h1 class="header__title" (click)="titleClick.emit()">
     Network
   </h1>
 </div>

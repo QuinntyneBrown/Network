@@ -1,6 +1,10 @@
 :host {
 
-  .profile__details {
+  app-digital-asset-upload {
+    display: block;
+    margin-bottom: 16px;
+  }
+  [main] {
     display: grid;
     grid-template-columns: auto 1fr;
     gap:20px;

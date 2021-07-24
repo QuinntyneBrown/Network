@@ -31,4 +31,8 @@ export class LandingComponent {
   public handleEditClick(profile: Profile) {
     this._router.navigate(["profile",profile.profileId]);
   }
+
+  public handleCreateClick() {
+    this._router.navigate(["profile", "create"]);
+  }
 }

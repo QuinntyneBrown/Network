@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ProfileService } from '@api';
 import { NavigationService } from '@core';
-import { of } from 'rxjs';
-import { map, startWith, switchMap, tap } from 'rxjs/operators';
+import { of, Subject } from 'rxjs';
+import { map, startWith, switchMap, takeUntil, tap } from 'rxjs/operators';
 
 export enum ProfileState {
   Edit,
@@ -19,31 +19,39 @@ export enum ProfileState {
 })
 export class ProfileComponent  {
 
-  public readonly avatarFormControl = new FormControl(null, []);
+  private readonly _destroyed$: Subject<void> = new Subject();
 
   private get initialVm$() {
+    let vm = {
+      state: ProfileState.Create,
+      profileId: null,
+      form: new FormGroup({
+        profileId: new FormControl(null,[]),
+        firstname: new FormControl(null, []),
+        lastname: new FormControl(null, []),
+        email: new FormControl(null, []),
+        githubProfile: new FormControl(null, []),
+        linkedInProfile: new FormControl(null, []),
+        avatarDigitalAssetId: new FormControl(null, [])
+      }),
+      avatarFormControl: new FormControl(null,[])
+    };
+
     return this._activatedRoute.paramMap
     .pipe(
       map(paramMap => {
         if(paramMap.get("profileId")) {
-          return { state: ProfileState.View, profileId: paramMap.get("profileId") };
+          return Object.assign(vm,{ state: ProfileState.View, profileId: paramMap.get("profileId") });
         }
 
         if(paramMap.get("editProfileId")) {
-          return { state: ProfileState.Edit, profileId: paramMap.get("editProfileId") };
+          return Object.assign(vm, { state: ProfileState.Edit, profileId: paramMap.get("editProfileId") });
         }
 
-        return { state: ProfileState.Create, profileId: "" };
+        return vm;
       })
     )
   }
-  public form: FormGroup = new FormGroup({
-    firstname: new FormControl(null, []),
-    lastnmae: new FormControl(null, []),
-    email: new FormControl(null, []),
-    githubProfile: new FormControl(null, []),
-    linkedInProfile: new FormControl(null, [])
-  });
 
   public ProfileState: typeof ProfileState = ProfileState;
 
@@ -54,12 +62,15 @@ export class ProfileComponent  {
         return this._profileService.getById(vm)
         .pipe(
           map(profile => Object.assign(vm, { profile })),
-          tap(vm => this.avatarFormControl.patchValue(vm.profile.avatarDigitalAssetId))
+          tap(vm => {
+            vm.avatarFormControl.patchValue(vm.profile.avatarDigitalAssetId);
+            vm.form.patchValue(vm.profile)
+          })
         );
       }
       return of(Object.assign(vm, { profile: null }));
     }),
-    switchMap(vm => this.avatarFormControl
+    switchMap(vm => vm.avatarFormControl
       .valueChanges
       .pipe(
         switchMap(avatarDigitalAssetId => {
@@ -75,15 +86,25 @@ export class ProfileComponent  {
   constructor(
     private readonly _activatedRoute: ActivatedRoute,
     private readonly _profileService: ProfileService,
-    private readonly _navigationService: NavigationService
+    private readonly _navigationService: NavigationService,
+    private readonly _router: Router
   ) { }
 
   public handleEditClick(vm) {
-    vm.state = ProfileState.Edit;
+    this._router.navigate(["/","profile","edit", vm.profile.profileId])
   }
 
   public handleSaveClick(vm) {
-    vm.state = ProfileState.View;
+    const obs$ = vm.state == ProfileState.Edit
+    ? this._profileService.update({ profile: vm.form.value })
+    :this._profileService.create({ profile: vm.form.value })
+
+    obs$
+    .pipe(
+      takeUntil(this._destroyed$),
+      tap(response => this._router.navigate(["/", "profile", response.profile.profileId]))
+    )
+    .subscribe();
   }
 
   public back() {

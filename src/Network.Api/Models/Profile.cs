@@ -12,7 +12,7 @@ namespace Network.Api.Models
         public string Email { get; private set; }
         public string GithubProfile { get; private set; }
         public string LinkedInProfile { get; private set; }
-        public string PhoneNumber { get; private set; }
+        public string Phone { get; private set; }
         public List<ProfileNote> ProfileNotes { get; set; } = new();
         public List<Position> Experience { get; set; } = new();
         public DateTime Created { get; private set; } = DateTime.UtcNow;
@@ -34,6 +34,12 @@ namespace Network.Api.Models
         public Profile SetAvatarDigitalAssetId(Guid? id)
         {
             AvatarDigitalAssetId = id;
+            return this;
+        }
+
+        public Profile SetPhone(string phone)
+        {
+            Phone = phone;
             return this;
         }
     }

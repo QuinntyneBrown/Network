@@ -3,6 +3,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { ProfileComponent } from './profile.component';
 
 const routes: Routes = [
+  { path: 'create', component: ProfileComponent },
+  { path: 'edit/:editProfileId', component: ProfileComponent },
   { path: ':profileId', component: ProfileComponent }
 ];
 

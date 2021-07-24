@@ -2,8 +2,9 @@
 
   <app-bento-box *ngIf="vm.state == ProfileState.View">
 
-    <div main class="profile__details">
-      <app-digital-asset-upload icon="photo_camera" [formControl]="avatarFormControl"></app-digital-asset-upload>
+    <div main>
+
+      <app-digital-asset-upload icon="photo_camera" [formControl]="vm.avatarFormControl"></app-digital-asset-upload>
 
       <h1>{{ vm.profile.firstname }}  {{ vm.profile.lastname }}</h1>
 
@@ -13,51 +14,63 @@
         </button>
       </div>
 
-
     </div>
 
-    <p cell>Email: {{ vm.profile.email }}</p>
+    <div class="g-field" cell>
+      <label class="g-field__label">Email</label>
+      <span class="g-field__property">{{ vm.profile.email }}</span>
+    </div>
 
-    <p cell>Github Profile: {{ vm.profile.githubProfile }}</p>
+    <div class="g-field" cell>
+      <label class="g-field__label">Github Profile</label>
+      <span class="g-field__property">{{ vm.profile.githubProfile }}</span>
+    </div>
 
   </app-bento-box>
 
-  <div *ngIf="vm.state == ProfileState.Edit" style="text-align: center;">
+  <div *ngIf="vm.state == ProfileState.Edit || vm.state == ProfileState.Create" style="text-align: center;">
 
-    <app-digital-asset-upload icon="photo_camera" [formControl]="avatarFormControl" *ngIf="vm.state != ProfileState.Create"></app-digital-asset-upload>
+    <app-digital-asset-upload icon="photo_camera" [formControl]="vm.avatarFormControl" *ngIf="vm.state != ProfileState.Create"></app-digital-asset-upload>
 
-    <h1>Profile Details</h1>
+    <h1 *ngIf="vm.state == ProfileState.Edit" class="g-title">Profile Details</h1>
 
-    <div class="profile__firstname-lastname-fields">
+    <h1 *ngIf="vm.state == ProfileState.Create" class="g-title">Create Profile</h1>
+
+    <form class="profile__firstname-lastname-fields" [formGroup]="vm.form">
       <mat-form-field appearance="outline">
         <mat-label>Firstname</mat-label>
-        <input matInput placeholder='Firstname'>
+        <input matInput placeholder='Firstname' formControlName="firstname">
       </mat-form-field>
 
       <mat-form-field appearance="outline">
         <mat-label>Lastname</mat-label>
-        <input matInput placeholder='Lastname'>
+        <input matInput placeholder='Lastname' formControlName="lastname">
       </mat-form-field>
 
       <mat-form-field appearance="outline" cell>
         <mat-label>Email</mat-label>
-        <input matInput placeholder='Email'>
+        <input matInput placeholder='Email' formControlName="email">
       </mat-form-field>
 
       <mat-form-field appearance="outline" cell>
         <mat-label>Github Profile</mat-label>
-        <input matInput placeholder='Github Profile'>
+        <input matInput placeholder='Github Profile' formControlName="githubProfile">
       </mat-form-field>
 
-    </div>
+      <mat-form-field appearance="outline" cell>
+        <mat-label>LinkedIn Profile</mat-label>
+        <input matInput placeholder='LinkedIn Profile' formControlName="linkedInProfile">
+      </mat-form-field>
+
+    </form>
 
 
     <div class="g-actions">
-      <button mat-raised-button (click)="handleSaveClick(vm)">
+      <button mat-stroked-button (click)="handleSaveClick(vm)">
         Cancel
       </button>
 
-      <button mat-raised-button color="primary" (click)="handleSaveClick(vm)">
+      <button mat-raised-button (click)="handleSaveClick(vm)">
         Save
       </button>
     </div>

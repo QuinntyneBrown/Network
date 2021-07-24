@@ -12,6 +12,7 @@ namespace Network.Api.Features
                 Firstname = profile.Firstname,
                 Lastname = profile.Lastname,
                 Email = profile.Email,
+                Phone = profile.Phone,
                 GithubProfile = profile.GithubProfile,
                 LinkedInProfile = profile.LinkedInProfile,
                 AvatarDigitalAssetId = profile.AvatarDigitalAssetId,
