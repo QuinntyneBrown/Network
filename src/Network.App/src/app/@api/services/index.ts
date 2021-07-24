@@ -1,4 +1,5 @@
 export * from './company.service';
+export * from './digital-asset.service';
 export * from './location.service';
 export * from './note.service';
 export * from './organization.service';

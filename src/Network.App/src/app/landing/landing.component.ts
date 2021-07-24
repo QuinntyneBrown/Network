@@ -1,3 +1,4 @@
+import { DataSource } from '@angular/cdk/collections';
 import { Component } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
@@ -17,7 +18,7 @@ export class LandingComponent {
     map(profiles => {
       return {
         dataSource: new MatTableDataSource(profiles),
-        displayedColumns: ["firstname", "lastname", "actions"]
+        displayedColumns: ["firstname", "lastname", "edit"]
       };
     })
   );

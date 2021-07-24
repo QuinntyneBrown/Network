@@ -1,0 +1,23 @@
+:host {
+    position: relative;
+    box-sizing: border-box;
+
+    .upload-button {
+        height: 100px;
+        width: 100px;
+        cursor: pointer;
+        background-color: #E5E5E5;
+        box-shadow: none;
+    }
+
+    img {
+        height: 100px;
+        width: 100px;
+        overflow: hidden;
+        border-radius: 50px;
+    }
+
+    h4 {
+      user-select: none;
+    }
+}

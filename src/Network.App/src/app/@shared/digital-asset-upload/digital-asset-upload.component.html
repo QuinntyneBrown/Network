@@ -1,0 +1,13 @@
+
+<ng-container *ngIf="digitalAssetId$ | async as digitalAssetId">
+    <img src="{{ baseUrl }}api/digitalasset/serve/{{ digitalAssetId }}" />
+</ng-container>
+
+<ng-container *ngIf="!(digitalAssetId$ | async)">
+    <button mat-fab class="upload-button">
+        <mat-icon>
+            {{ icon }}
+        </mat-icon>
+    </button>
+</ng-container>
+

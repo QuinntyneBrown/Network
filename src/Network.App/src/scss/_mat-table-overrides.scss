@@ -33,7 +33,8 @@ table.g-table.mat-table {
       grid-template-columns: 1fr 1fr 40px;
       border-radius: 10px;
       box-sizing: border-box;
-      padding:0;
+      padding:0px 12px 0 20px;
+      user-select: none;
     }
 
     td {
@@ -41,8 +42,8 @@ table.g-table.mat-table {
       place-items: center start;
       border:none;
       border-bottom: 1px solid #E5E5E5;
+      padding:0;
     }
-
 
     tr.mat-row.cdk-row:last-of-type {
       td {

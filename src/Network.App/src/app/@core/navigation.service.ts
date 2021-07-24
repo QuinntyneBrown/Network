@@ -1,3 +1,4 @@
+import { Location } from '@angular/common';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 
@@ -5,7 +6,10 @@ import { Router } from '@angular/router';
   providedIn: 'root'
 })
 export class NavigationService {
-  constructor(private router: Router) {}
+  constructor(
+    private readonly _location: Location,
+    private readonly _router: Router
+    ) {}
 
   loginUrl = '/login';
 
@@ -22,19 +26,23 @@ export class NavigationService {
   }
 
   public redirectToLogin(): void {
-    this.router.navigate([this.loginUrl]);
+    this._router.navigate([this.loginUrl]);
   }
 
   public redirectToPublicDefault(): void {
-    this.router.navigate(['']);
+    this._router.navigate(['']);
+  }
+
+  public back():void {
+    this._location.back();
   }
 
   public redirectPreLogin(): void {
     if (this.lastPath && this.lastPath !== this.loginUrl) {
-      this.router.navigateByUrl(this.lastPath);
+      this._router.navigateByUrl(this.lastPath);
       this.lastPath = '';
     } else {
-      this.router.navigate([this.defaultPath]);
+      this._router.navigate([this.defaultPath]);
     }
   }
 }

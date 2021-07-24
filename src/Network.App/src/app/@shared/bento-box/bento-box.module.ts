@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { BentoBoxComponent } from './bento-box.component';
 
 
-
 @NgModule({
   declarations: [
     BentoBoxComponent

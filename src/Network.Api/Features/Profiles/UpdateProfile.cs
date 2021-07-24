@@ -41,9 +41,11 @@ namespace Network.Api.Features
             {
                 var profile = await _context.Profiles.SingleAsync(x => x.ProfileId == request.Profile.ProfileId);
 
+                profile.SetAvatarDigitalAssetId(request.Profile.AvatarDigitalAssetId);
+
                 await _context.SaveChangesAsync(cancellationToken);
 
-                return new Response()
+                return new ()
                 {
                     Profile = profile.ToDto()
                 };
