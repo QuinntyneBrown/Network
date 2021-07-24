@@ -15,17 +15,19 @@ namespace Network.Api.Models
         public string PhoneNumber { get; private set; }
         public List<ProfileNote> ProfileNotes { get; set; } = new();
         public List<Position> Experience { get; set; } = new();
+        public DateTime Created { get; private set; } = DateTime.UtcNow;
 
         private Profile()
         {
 
         }
 
-        public Profile(string firstname, string lastname, string email, string githubProfile)
+        public Profile(string firstname, string lastname, string email, string githubProfile, string linkedInProfile)
         {
             Firstname = firstname;
             Lastname = lastname;
             Email = email;
+            LinkedInProfile = linkedInProfile;
             GithubProfile = githubProfile;
         }
 

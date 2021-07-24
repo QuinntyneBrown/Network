@@ -1,6 +1,6 @@
 <ng-container *ngIf="vm$ | async as vm">
 
-  <app-bento-box *ngIf="state == ProfileState.View">
+  <app-bento-box *ngIf="vm.state == ProfileState.View">
 
     <div main class="profile__details">
       <app-digital-asset-upload icon="photo_camera" [formControl]="avatarFormControl"></app-digital-asset-upload>
@@ -8,7 +8,7 @@
       <h1>{{ vm.profile.firstname }}  {{ vm.profile.lastname }}</h1>
 
       <div class="g-actions">
-        <button mat-stroked-button (click)="handleEditClick()">
+        <button mat-stroked-button (click)="handleEditClick(vm)">
           Edit
         </button>
       </div>
@@ -22,47 +22,45 @@
 
   </app-bento-box>
 
-  <app-bento-box *ngIf="state == ProfileState.Edit">
-    <div main class=profile__details>
+  <div *ngIf="vm.state == ProfileState.Edit" style="text-align: center;">
 
-      <app-digital-asset-upload icon="photo_camera" [formControl]="avatarFormControl"></app-digital-asset-upload>
+    <app-digital-asset-upload icon="photo_camera" [formControl]="avatarFormControl" *ngIf="vm.state != ProfileState.Create"></app-digital-asset-upload>
 
-      <div class="profile__firstname-lastname-fields">
-        <mat-form-field appearance="outline" cell>
-          <mat-label>Firstname</mat-label>
-          <input matInput placeholder='Firstname'>
-        </mat-form-field>
+    <h1>Profile Details</h1>
 
-        <mat-form-field appearance="outline" cell>
-          <mat-label>Lastname</mat-label>
-          <input matInput placeholder='Lastname'>
-        </mat-form-field>
-      </div>
+    <div class="profile__firstname-lastname-fields">
+      <mat-form-field appearance="outline">
+        <mat-label>Firstname</mat-label>
+        <input matInput placeholder='Firstname'>
+      </mat-form-field>
 
+      <mat-form-field appearance="outline">
+        <mat-label>Lastname</mat-label>
+        <input matInput placeholder='Lastname'>
+      </mat-form-field>
 
-      <div class="g-actions">
-        <button mat-raised-button (click)="handleSaveClick()">
-          Cancel
-        </button>
+      <mat-form-field appearance="outline" cell>
+        <mat-label>Email</mat-label>
+        <input matInput placeholder='Email'>
+      </mat-form-field>
 
-        <button mat-raised-button color="primary" (click)="handleSaveClick()">
-          Save
-        </button>
-      </div>
+      <mat-form-field appearance="outline" cell>
+        <mat-label>Github Profile</mat-label>
+        <input matInput placeholder='Github Profile'>
+      </mat-form-field>
 
     </div>
 
-    <mat-form-field appearance="outline" cell>
-      <mat-label>Email</mat-label>
-      <input matInput placeholder='Email'>
-    </mat-form-field>
 
-    <mat-form-field appearance="outline" cell>
-      <mat-label>Github Profile</mat-label>
-      <input matInput placeholder='Github Profile'>
-    </mat-form-field>
+    <div class="g-actions">
+      <button mat-raised-button (click)="handleSaveClick(vm)">
+        Cancel
+      </button>
 
-
-  </app-bento-box>
+      <button mat-raised-button color="primary" (click)="handleSaveClick(vm)">
+        Save
+      </button>
+    </div>
+  </div>
 
 </ng-container>

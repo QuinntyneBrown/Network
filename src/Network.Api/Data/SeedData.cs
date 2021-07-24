@@ -23,7 +23,7 @@ namespace Network.Api.Data
 
             if (profile == null)
             {
-                profile = new Profile("Quinntyne", "Brown", "quinntynebrown@gmail.com", "https://github.com/QuinntyneBrown");
+                profile = new Profile("Quinntyne", "Brown", "quinntynebrown@gmail.com", "https://github.com/QuinntyneBrown", "https://www.linkedin.com/in/quinntynebrown/");
                 context.Profiles.Add(profile);
                 context.SaveChanges();
             }

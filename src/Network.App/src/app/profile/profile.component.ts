@@ -3,6 +3,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { ProfileService } from '@api';
 import { NavigationService } from '@core';
+import { of } from 'rxjs';
 import { map, startWith, switchMap, tap } from 'rxjs/operators';
 
 export enum ProfileState {
@@ -20,6 +21,22 @@ export class ProfileComponent  {
 
   public readonly avatarFormControl = new FormControl(null, []);
 
+  private get initialVm$() {
+    return this._activatedRoute.paramMap
+    .pipe(
+      map(paramMap => {
+        if(paramMap.get("profileId")) {
+          return { state: ProfileState.View, profileId: paramMap.get("profileId") };
+        }
+
+        if(paramMap.get("editProfileId")) {
+          return { state: ProfileState.Edit, profileId: paramMap.get("editProfileId") };
+        }
+
+        return { state: ProfileState.Create, profileId: "" };
+      })
+    )
+  }
   public form: FormGroup = new FormGroup({
     firstname: new FormControl(null, []),
     lastnmae: new FormControl(null, []),
@@ -28,26 +45,31 @@ export class ProfileComponent  {
     linkedInProfile: new FormControl(null, [])
   });
 
-  public state: ProfileState = ProfileState.View;
-
   public ProfileState: typeof ProfileState = ProfileState;
 
-  public readonly vm$ = this._activatedRoute.paramMap
+  public readonly vm$ = this.initialVm$
   .pipe(
-    switchMap(paramMap => this._profileService.getById({ profileId: paramMap.get("id") })),
-    tap(profile => this.avatarFormControl.patchValue(profile.avatarDigitalAssetId)),
-    switchMap(profile => this.avatarFormControl
+    switchMap(vm => {
+      if(vm.state == ProfileState.Edit || vm.state == ProfileState.View) {
+        return this._profileService.getById(vm)
+        .pipe(
+          map(profile => Object.assign(vm, { profile })),
+          tap(vm => this.avatarFormControl.patchValue(vm.profile.avatarDigitalAssetId))
+        );
+      }
+      return of(Object.assign(vm, { profile: null }));
+    }),
+    switchMap(vm => this.avatarFormControl
       .valueChanges
       .pipe(
         switchMap(avatarDigitalAssetId => {
-          Object.assign(profile, { avatarDigitalAssetId });
-          return this._profileService.update({ profile });
+          Object.assign(vm.profile, { avatarDigitalAssetId });
+          return this._profileService.update({ profile: vm.profile });
         }),
-        map(_ => profile),
-        startWith(profile)
+        map(_ => vm),
+        startWith(vm)
         )
-        ),
-    map(profile => ({ profile }))
+        )
   );
 
   constructor(
@@ -56,16 +78,15 @@ export class ProfileComponent  {
     private readonly _navigationService: NavigationService
   ) { }
 
-  public handleEditClick() {
-    this.state = ProfileState.Edit;
+  public handleEditClick(vm) {
+    vm.state = ProfileState.Edit;
   }
 
-  public handleSaveClick() {
-    this.state = ProfileState.View;
+  public handleSaveClick(vm) {
+    vm.state = ProfileState.View;
   }
 
   public back() {
     this._navigationService.back();
   }
-
 }

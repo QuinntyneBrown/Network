@@ -42,7 +42,8 @@ namespace Network.Api.Features
                     request.Profile.Firstname,
                     request.Profile.Lastname,
                     request.Profile.Email,
-                    request.Profile.GithubProfile);
+                    request.Profile.GithubProfile,
+                    request.Profile.LinkedInProfile);
 
                 _context.Profiles.Add(profile);
 

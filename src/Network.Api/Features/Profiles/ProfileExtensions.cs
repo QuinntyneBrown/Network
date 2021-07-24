@@ -14,7 +14,9 @@ namespace Network.Api.Features
                 Email = profile.Email,
                 GithubProfile = profile.GithubProfile,
                 LinkedInProfile = profile.LinkedInProfile,
-                AvatarDigitalAssetId = profile.AvatarDigitalAssetId
+                AvatarDigitalAssetId = profile.AvatarDigitalAssetId,
+                Created = profile.Created
+
             };
         }
     }
