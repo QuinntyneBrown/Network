@@ -21,6 +21,7 @@ namespace Network.Api.Data
         public DbSet<TeamTechnology> TeamTechnologies { get; private set; }
         public DbSet<OrganizationTeam> OrganizationTeams { get; private set; }
         public DbSet<CompanyTeam> CompanyTeams { get; private set; }
+        public DbSet<Office> Offices { get; private set; }
         public NetworkDbContext(DbContextOptions options)
             :base(options) { }
 

@@ -33,7 +33,7 @@
     <div class="organization__organizations-section-container">
 
       <div *ngFor="let organization of vm.organizations">
-        <img class="organization__logo" src="{{ baseUrl }}api/digitalasset/serve/{{ organization.logoDigitalAssetId }}">
+        <div class="organization__logo" style="background-image:url('{{ baseUrl }}api/digitalasset/serve/{{ organization.logoDigitalAssetId }}')"></div>
         <h3>{{ organization.name }}</h3>
       </div>
     </div>

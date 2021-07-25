@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Network.Api.Data;
 
 namespace Network.Api.Migrations
 {
     [DbContext(typeof(NetworkDbContext))]
-    partial class NetworkDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210725011422_Office")]
+    partial class Office
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -102,12 +104,7 @@ namespace Network.Api.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("OrganizationId")
-                        .HasColumnType("uniqueidentifier");
-
                     b.HasKey("OfficeId");
-
-                    b.HasIndex("OrganizationId");
 
                     b.ToTable("Offices");
                 });
@@ -303,42 +300,6 @@ namespace Network.Api.Migrations
                     b.Navigation("Location");
                 });
 
-            modelBuilder.Entity("Network.Api.Models.Office", b =>
-                {
-                    b.HasOne("Network.Api.Models.Organization", null)
-                        .WithMany("Offices")
-                        .HasForeignKey("OrganizationId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.OwnsOne("Network.Api.Models.Address", "Address", b1 =>
-                        {
-                            b1.Property<Guid>("OfficeId")
-                                .HasColumnType("uniqueidentifier");
-
-                            b1.Property<string>("City")
-                                .HasColumnType("nvarchar(max)");
-
-                            b1.Property<string>("PostalCode")
-                                .HasColumnType("nvarchar(max)");
-
-                            b1.Property<string>("Province")
-                                .HasColumnType("nvarchar(max)");
-
-                            b1.Property<string>("Street")
-                                .HasColumnType("nvarchar(max)");
-
-                            b1.HasKey("OfficeId");
-
-                            b1.ToTable("Offices");
-
-                            b1.WithOwner()
-                                .HasForeignKey("OfficeId");
-                        });
-
-                    b.Navigation("Address");
-                });
-
             modelBuilder.Entity("Network.Api.Models.Position", b =>
                 {
                     b.HasOne("Network.Api.Models.Company", "Company")
@@ -385,8 +346,6 @@ namespace Network.Api.Migrations
             modelBuilder.Entity("Network.Api.Models.Organization", b =>
                 {
                     b.Navigation("Companies");
-
-                    b.Navigation("Offices");
                 });
 
             modelBuilder.Entity("Network.Api.Models.Profile", b =>

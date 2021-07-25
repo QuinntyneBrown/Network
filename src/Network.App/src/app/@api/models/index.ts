@@ -4,6 +4,7 @@ export * from './dates-employed';
 export * from './digital-asset';
 export * from './location';
 export * from './note';
+export * from './office';
 export * from './organization-team';
 export * from './organization-technology';
 export * from './organization';

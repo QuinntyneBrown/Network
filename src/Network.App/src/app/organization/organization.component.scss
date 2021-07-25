@@ -1,7 +1,18 @@
 :host {
+
+  .organization__organizations-section-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap:30px;
+  }
+
   .organization__logo {
-    max-width: 150px;
-    max-height: 150px;
-    overflow: hidden;
+    display: block;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
   }
 }

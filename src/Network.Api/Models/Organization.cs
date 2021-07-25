@@ -8,6 +8,7 @@ namespace Network.Api.Models
         public Guid OrganizationId { get; private set; }       
         public string Name { get; private set; }
         public List<Company> Companies { get; private set; } = new();
+        public List<Office> Offices { get; private set; } = new();
         public Guid? LogoDigitalAssetId { get; private set; }
 
         public Organization(

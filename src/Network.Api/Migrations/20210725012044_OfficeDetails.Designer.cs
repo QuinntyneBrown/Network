@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Network.Api.Data;
 
 namespace Network.Api.Migrations
 {
     [DbContext(typeof(NetworkDbContext))]
-    partial class NetworkDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210725012044_OfficeDetails")]
+    partial class OfficeDetails
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

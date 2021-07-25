@@ -3,6 +3,7 @@ export * from './company.service';
 export * from './digital-asset.service';
 export * from './location.service';
 export * from './note.service';
+export * from './office.service';
 export * from './organization-team.service';
 export * from './organization-technology.service';
 export * from './organization.service';

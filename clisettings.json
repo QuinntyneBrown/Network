@@ -41,6 +41,7 @@
     "Team",
     "TeamTechnology",
     "OrganizationTeam",
-    "CompanyTeam"
+    "CompanyTeam",
+    "Office"
   ]
 }
