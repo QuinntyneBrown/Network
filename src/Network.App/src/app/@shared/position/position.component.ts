@@ -1,15 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Position } from '@api';
 
 @Component({
   selector: 'app-position',
   templateUrl: './position.component.html',
   styleUrls: ['./position.component.scss']
 })
-export class PositionComponent implements OnInit {
+export class PositionComponent {
 
-  constructor() { }
+  @Output() public editClick: EventEmitter<Position> = new EventEmitter();
 
-  ngOnInit(): void {
-  }
+  @Input() public position!: Position;
 
 }

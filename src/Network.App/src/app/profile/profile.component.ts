@@ -63,7 +63,7 @@ export class ProfileComponent  {
         .pipe(
           map(profile => Object.assign(vm, { profile })),
           tap(vm => {
-            vm.avatarFormControl.patchValue(vm.profile.avatarDigitalAssetId);
+            vm.avatarFormControl.patchValue(vm.profile?.avatarDigitalAssetId);
             vm.form.patchValue(vm.profile)
           })
         );

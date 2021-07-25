@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { InteractionPopupComponent } from './interaction-popup.component';
+import { PositionModalComponent } from './position-modal.component';
 
-describe('InteractionPopupComponent', () => {
-  let component: InteractionPopupComponent;
-  let fixture: ComponentFixture<InteractionPopupComponent>;
+describe('PositionModalComponent', () => {
+  let component: PositionModalComponent;
+  let fixture: ComponentFixture<PositionModalComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ InteractionPopupComponent ]
+      declarations: [ PositionModalComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(InteractionPopupComponent);
+    fixture = TestBed.createComponent(PositionModalComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

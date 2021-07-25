@@ -6,13 +6,22 @@
     gap:30px;
   }
 
-  .organization__logo {
-    display: block;
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
+
+
+  .organization__card {
+    cursor: pointer;
+    padding: 30px;
+    border-radius: 10px;
+    border: 1px solid #E5E5E5;
+
+    .organization__logo {
+      display: block;
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover;
+    }
   }
 }

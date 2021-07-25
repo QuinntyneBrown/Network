@@ -5,8 +5,8 @@ import { OrganizationComponent } from './organization.component';
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'create' },
   { path: 'create', component: OrganizationComponent },
-  { path: 'edit/:editOrgnaizationId', component: OrganizationComponent },
-  { path: ':orgnaizationId', component: OrganizationComponent }
+  { path: 'edit/:editId', component: OrganizationComponent },
+  { path: ':id', component: OrganizationComponent }
 ];
 
 @NgModule({

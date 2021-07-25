@@ -86,8 +86,8 @@
     </div>
   </div>
 
-  <app-experience [profileId]="vm.profile.profileId"></app-experience>
+  <app-experience [profileId]="vm.profile?.profileId" [positions]="vm.profile?.experience"></app-experience>
 
-  <app-notes [profileId]="vm.profile.profileId"></app-notes>
+  <app-notes [profileId]="vm.profile?.profileId"></app-notes>
 
 </ng-container>

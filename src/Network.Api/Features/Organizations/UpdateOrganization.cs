@@ -41,9 +41,11 @@ namespace Network.Api.Features
             {
                 var organization = await _context.Organizations.SingleAsync(x => x.OrganizationId == request.Organization.OrganizationId);
 
+                organization.Update(request.Organization.Name, request.Organization.LogoDigitalAssetId);
+
                 await _context.SaveChangesAsync(cancellationToken);
 
-                return new Response()
+                return new ()
                 {
                     Organization = organization.ToDto()
                 };

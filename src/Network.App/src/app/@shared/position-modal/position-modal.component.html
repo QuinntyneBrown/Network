@@ -1,0 +1,17 @@
+<ng-container *ngIf="vm$ | async as vm">
+
+  <h1 class="g-title">Edit Position</h1>
+
+  <button mat-icon-button [mat-dialog-close] class="g-close-modal-button">
+    <mat-icon>
+      close
+    </mat-icon>
+  </button>
+
+  <form [formGroup]="vm.form">
+    <app-organization-select formControlName="organizationId">
+
+    </app-organization-select>
+  </form>
+
+</ng-container>

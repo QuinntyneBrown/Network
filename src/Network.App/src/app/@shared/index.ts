@@ -5,6 +5,8 @@ export * from './experience-modal';
 export * from './footer';
 export * from './note-modal';
 export * from './organization-select';
+export * from './pills';
 export * from './position';
+export * from './position-modal';
 export * from './shell';
 export * from './entity-data-source';

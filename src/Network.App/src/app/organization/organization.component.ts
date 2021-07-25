@@ -1,9 +1,16 @@
 import { Component, Inject, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { OrganizationService } from '@api';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Organization, OrganizationService } from '@api';
 import { baseUrl } from '@core';
-import { Observable, Subject } from 'rxjs';
-import { map, takeUntil } from 'rxjs/operators';
+import { of, Subject } from 'rxjs';
+import { map, startWith, switchMap, takeUntil } from 'rxjs/operators';
+
+export enum OrganizationState {
+  Edit,
+  Create,
+  View
+}
 
 @Component({
   selector: 'app-organization',
@@ -14,16 +21,45 @@ export class OrganizationComponent implements OnDestroy   {
 
   private readonly _destroyed$ = new Subject();
 
-  public readonly vm$ = this._organizationService.get()
+  public readonly OrganizationState: typeof OrganizationState = OrganizationState;
+
+  private get _initialVm$() {
+    return this._activatedRoute
+    .paramMap
+    .pipe(
+      map(paramMap => {
+        return {
+          state: paramMap.get("editId") ? OrganizationState.Edit: OrganizationState.Create,
+          organiztionId: paramMap.get("editId"),
+          organization: null
+        }
+      })
+    )
+  }
+
+  public readonly vm$ = this._initialVm$
   .pipe(
-    map(organizations => {
-      return {
-        organizations,
-        form: new FormGroup({
-          name: new FormControl(null,[]),
-          logoDigitalAssetId: new FormControl(null,[])
-        })
+    switchMap(vm => this._organizationService.get().pipe(
+      map(organizations => (Object.assign(vm, {organizations })))
+    )),
+    switchMap(vm => {
+
+      if(vm.organiztionId) {
+        return this._organizationService.getById({ organizationId: vm.organiztionId })
+        .pipe(
+          map(organization => Object.assign(vm, { organization }))
+        )
       }
+      return of(vm)
+    }),
+    map(vm => {
+      return Object.assign(vm, {
+        form: new FormGroup({
+          organizationId: new FormControl(vm.organization?.organizationId, []),
+          name: new FormControl(vm.organization?.name,[]),
+          logoDigitalAssetId: new FormControl(vm.organization?.logoDigitalAssetId,[])
+        })
+      })
     })
   );
 
@@ -32,16 +68,26 @@ export class OrganizationComponent implements OnDestroy   {
   }
 
   constructor(
+    private readonly _activatedRoute: ActivatedRoute,
     private readonly _organizationService: OrganizationService,
-    @Inject(baseUrl) private readonly _baseUrl: string
+    @Inject(baseUrl) private readonly _baseUrl: string,
+    private readonly _router: Router
   ) { }
 
     public handleSaveClick(vm) {
-      this._organizationService
+      const obs$ = vm.state == OrganizationState.Create
+      ? this._organizationService
       .create({ organization: vm.form.value })
-      .pipe(
+      : this._organizationService
+      .update({ organization: vm.form.value });
+
+      obs$.pipe(
         takeUntil(this._destroyed$)
       ).subscribe();
+    }
+
+    public handleEditClick(organization: Organization) {
+      this._router.navigate(['/','organization','edit',organization.organizationId])
     }
 
     ngOnDestroy() {

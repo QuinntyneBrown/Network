@@ -1,1 +1,11 @@
-<p>organization-select works!</p>
+<ng-container *ngIf="vm$ | async as vm">
+
+  <mat-form-field appearance="outline">
+    <mat-select color="primary" placeholder="Organization" [formControl]="formControl">
+      <mat-option *ngFor="let organization of vm.organizations" [value]="organization.organizationId">
+        {{ organization.name }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+</ng-container>

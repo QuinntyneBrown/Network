@@ -5,6 +5,7 @@ import { PositionModule } from '@shared/position';
 import { MatButtonModule } from '@angular/material/button';
 import { ExperienceModalModule } from '@shared/experience-modal';
 import { MatDialogModule } from '@angular/material/dialog';
+import { PositionModalModule } from '@shared/position-modal';
 
 
 @NgModule({
@@ -19,6 +20,8 @@ import { MatDialogModule } from '@angular/material/dialog';
     PositionModule,
     MatButtonModule,
     ExperienceModalModule,
+    MatDialogModule,
+    PositionModalModule,
     MatDialogModule
   ]
 })

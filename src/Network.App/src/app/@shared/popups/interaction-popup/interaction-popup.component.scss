@@ -1,9 +1,0 @@
-@use '../popups';
-
-:host {
-  @extend .popup;
-
-  app-datepicker-pill {
-    margin: 0px 0px 20px;
-  }
-}

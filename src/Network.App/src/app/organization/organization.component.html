@@ -1,13 +1,14 @@
 <ng-container *ngIf="vm$ | async as vm">
 
-
   <div style="text-align: center;">
 
     <form class="profile__firstname-lastname-fields" [formGroup]="vm.form">
 
       <app-digital-asset-upload icon="photo_camera" formControlName="logoDigitalAssetId"></app-digital-asset-upload>
 
-      <h1 class="g-title">Create Organization</h1>
+      <h1 class="g-title" *ngIf="vm.state == OrganizationState.Create">Create Organization</h1>
+
+      <h1 class="g-title" *ngIf="vm.state == OrganizationState.Edit">Edit Organization</h1>
 
       <mat-form-field appearance="outline" class="g-form-field">
         <mat-label>Name</mat-label>
@@ -32,7 +33,7 @@
 
     <div class="organization__organizations-section-container">
 
-      <div *ngFor="let organization of vm.organizations">
+      <div *ngFor="let organization of vm.organizations" (click)="handleEditClick(organization)" class="organization__card">
         <div class="organization__logo" style="background-image:url('{{ baseUrl }}api/digitalasset/serve/{{ organization.logoDigitalAssetId }}')"></div>
         <h3>{{ organization.name }}</h3>
       </div>

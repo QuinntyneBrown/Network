@@ -1,1 +1,7 @@
-<p>position works!</p>
+<button mat-icon-button (click)="editClick.emit(position)">
+  <mat-icon>
+    edit
+  </mat-icon>
+</button>
+
+<h1 class="g-title">{{ position.title }}</h1>

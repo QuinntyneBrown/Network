@@ -1,6 +1,6 @@
 
 <ng-container *ngIf="digitalAssetId$ | async as digitalAssetId">
-    <img src="{{ baseUrl }}api/digitalasset/serve/{{ digitalAssetId }}" />
+    <div class="logo"  style="background-image:url('{{ baseUrl }}api/digitalasset/serve/{{ digitalAssetId }}')"></div>
 </ng-container>
 
 <ng-container *ngIf="!(digitalAssetId$ | async)">

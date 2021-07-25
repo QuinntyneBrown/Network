@@ -23,5 +23,14 @@ namespace Network.Api.Models
         {
 
         }
+
+        public Organization Update(
+            string name,
+            Guid? logoDigitalAssetId = null)
+        {
+            Name = name;
+            LogoDigitalAssetId = logoDigitalAssetId;
+            return this;
+        }
     }
 }

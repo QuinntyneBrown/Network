@@ -5,6 +5,7 @@ import { DateAdapter, MAT_DATE_LOCALE, MAT_DATE_FORMATS, MatNativeDateModule } f
 import { MomentDateAdapter, MAT_MOMENT_DATE_FORMATS, MatMomentDateModule } from "@angular/material-moment-adapter";
 import { DatepickerPillComponent } from './datepicker-pill.component';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { MatMenuModule } from '@angular/material/menu';
     FormsModule,
     CommonModule,
     MatMomentDateModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    MatDatepickerModule
   ]
 })
 export class DatepickerPillModule { }
