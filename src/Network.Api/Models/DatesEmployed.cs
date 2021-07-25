@@ -12,16 +12,16 @@ namespace Network.Api.Models
         [JsonProperty]
         public DateTime StartDate { get; private set; }
         [JsonProperty]
-        public DateTime EndDate { get; private set; }
-        public int Days => (EndDate.Date - StartDate.Date).Days;
-        public int Hours => (int)(EndDate - StartDate).TotalHours;
+        public DateTime? EndDate { get; private set; }
+        public int Days => EndDate.HasValue ? (EndDate.Value.Date - StartDate.Date).Days : (DateTime.UtcNow.Date - StartDate.Date).Days;
+        public int Hours => EndDate.HasValue ? (int)(EndDate.Value - StartDate).TotalHours : (int)(DateTime.UtcNow - StartDate).TotalHours;
 
         protected DatesEmployed()
         {
 
         }
 
-        private DatesEmployed(DateTime startDate, DateTime endDate)
+        private DatesEmployed(DateTime startDate, DateTime? endDate)
         {
             StartDate = startDate;
             EndDate = endDate;
@@ -33,9 +33,9 @@ namespace Network.Api.Models
             yield return EndDate;
         }
 
-        public static Result<DatesEmployed> Create(DateTime startDate, DateTime endDate)
+        public static Result<DatesEmployed> Create(DateTime startDate, DateTime? endDate)
         {
-            if (startDate > endDate)
+            if (endDate.HasValue && startDate > endDate)
                 return Result.Failure<DatesEmployed>("Start Date should be less than End Date");
 
             return Result.Success(new DatesEmployed(startDate, endDate));

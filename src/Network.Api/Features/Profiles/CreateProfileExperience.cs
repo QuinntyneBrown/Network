@@ -38,8 +38,10 @@ namespace Network.Api.Features
                     .Include(x => x.Experience)
                     .SingleAsync(x => x.ProfileId == request.ProfileId);
 
+                var datesEmployed = DatesEmployed.Create(request.Position.DatesEmployed.StartDate.Value, request.Position.DatesEmployed.EndDate).Value;
+
                 profile.Experience.Add(
-                    new Position(request.Position.OrganizationId, request.Position.Title)
+                    new Position(request.Position.OrganizationId, request.Position.Title,datesEmployed)
                     );
 
                 await _context.SaveChangesAsync(cancellationToken);

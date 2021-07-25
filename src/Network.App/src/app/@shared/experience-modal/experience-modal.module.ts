@@ -9,6 +9,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { CompanySelectModule } from '@shared/company-select';
 import { OrganizationSelectModule } from '@shared/organization-select';
+import { DatesEmployedModule } from '@shared/dates-employed';
 
 
 
@@ -28,7 +29,8 @@ import { OrganizationSelectModule } from '@shared/organization-select';
     MatInputModule,
     MatFormFieldModule,
     CompanySelectModule,
-    OrganizationSelectModule
+    OrganizationSelectModule,
+    DatesEmployedModule
 
   ]
 })

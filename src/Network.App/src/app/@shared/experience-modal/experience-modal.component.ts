@@ -20,7 +20,8 @@ export class ExperienceModalComponent {
         form: new FormGroup({
           organizationId: new FormControl(null,[Validators.required]),
           profileId: new FormControl(profileId,[Validators.required]),
-          title: new FormControl(null,[])
+          title: new FormControl(null,[]),
+          datesEmployed: new FormControl(null,[])
         })
       }
     })

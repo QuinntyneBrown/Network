@@ -32,5 +32,12 @@ namespace Network.Api.Models
             OrganizationId = organizationId;
             Title = title;
         }
+
+        public Position(Guid? organizationId, string title, DatesEmployed datesEmployed)
+        {
+            OrganizationId = organizationId;
+            Title = title;
+            DatesEmployed = datesEmployed;
+        }
     }
 }

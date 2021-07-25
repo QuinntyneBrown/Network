@@ -1,5 +1,6 @@
 export * from './bento-box';
 export * from './company-select';
+export * from './dates-employed';
 export * from './experience';
 export * from './experience-modal';
 export * from './footer';

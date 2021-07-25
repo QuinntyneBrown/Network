@@ -7,3 +7,33 @@
 <h1 class="g-title">{{ position.title }}</h1>
 
 <app-logo [digitalAssetId]="position?.organization?.logoDigitalAssetId"></app-logo>
+
+
+
+<div class="dates-employed__container">
+
+  <div class="g-field">
+    <span class="g-field__label">
+      Start Date
+    </span>
+    <span class="g-field__property">
+      {{ position.datesEmployed.startDate | date }}
+    </span>
+  </div>
+
+  <div class="g-field" *ngIf="position.datesEmployed.endDate; else present">
+    <span class="g-field__label">
+      End Date
+    </span>
+    <span class="g-field__property">
+      {{ position.datesEmployed.endDate | date }}
+    </span>
+  </div>
+
+  <ng-template #present>
+    <div>
+      Present
+    </div>
+  </ng-template>
+</div>
+
