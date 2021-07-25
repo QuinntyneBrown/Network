@@ -34,7 +34,7 @@
     <div class="organization__organizations-section-container">
 
       <div *ngFor="let organization of vm.organizations" (click)="handleEditClick(organization)" class="organization__card">
-        <div class="organization__logo" style="background-image:url('{{ baseUrl }}api/digitalasset/serve/{{ organization.logoDigitalAssetId }}')"></div>
+        <app-logo [digitalAssetId]="organization.logoDigitalAssetId"></app-logo>
         <h3>{{ organization.name }}</h3>
       </div>
     </div>

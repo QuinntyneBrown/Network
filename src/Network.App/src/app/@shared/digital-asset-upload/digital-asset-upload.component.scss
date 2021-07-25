@@ -2,23 +2,12 @@
     position: relative;
     box-sizing: border-box;
 
-    .upload-button {
+    .digital-asset-upload__button--upload {
         height: 100px;
         width: 100px;
         cursor: pointer;
         background-color: #E5E5E5;
         box-shadow: none;
-    }
-
-    .logo {
-      display: block;
-      width: 100px;
-      height: 100px;
-      border-radius: 50%;
-      background-repeat: no-repeat;
-      background-position: center;
-      background-size: cover;
-      margin: 0 auto;
     }
 
     h4 {

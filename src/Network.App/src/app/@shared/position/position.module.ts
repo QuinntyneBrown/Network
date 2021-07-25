@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { PositionComponent } from './position.component';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
+import { LogoModule } from '@shared/logo';
 
 
 
@@ -16,7 +17,8 @@ import { MatButtonModule } from '@angular/material/button';
   imports: [
     CommonModule,
     MatIconModule,
-    MatButtonModule
+    MatButtonModule,
+    LogoModule
   ]
 })
 export class PositionModule { }

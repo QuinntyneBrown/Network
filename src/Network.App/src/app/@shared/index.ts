@@ -3,6 +3,7 @@ export * from './company-select';
 export * from './experience';
 export * from './experience-modal';
 export * from './footer';
+export * from './logo';
 export * from './note-modal';
 export * from './organization-select';
 export * from './pills';

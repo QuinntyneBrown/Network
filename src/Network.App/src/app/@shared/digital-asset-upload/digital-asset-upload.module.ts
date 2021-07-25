@@ -4,6 +4,7 @@ import { DigitalAssetUploadComponent } from './digital-asset-upload.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { LogoModule } from '@shared/logo';
 
 @NgModule({
   declarations: [DigitalAssetUploadComponent],
@@ -13,7 +14,8 @@ import { MatIconModule } from '@angular/material/icon';
     ReactiveFormsModule,
     FormsModule,
     MatButtonModule,
-    MatIconModule
+    MatIconModule,
+    LogoModule
   ]
 })
 export class DigitalAssetUploadModule { }

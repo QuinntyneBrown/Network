@@ -1,10 +1,9 @@
-import { Component, Inject, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Organization, OrganizationService } from '@api';
-import { baseUrl } from '@core';
 import { of, Subject } from 'rxjs';
-import { map, startWith, switchMap, takeUntil } from 'rxjs/operators';
+import { map, switchMap, takeUntil } from 'rxjs/operators';
 
 export enum OrganizationState {
   Edit,
@@ -63,14 +62,9 @@ export class OrganizationComponent implements OnDestroy   {
     })
   );
 
-  public get baseUrl() {
-    return this._baseUrl;
-  }
-
   constructor(
     private readonly _activatedRoute: ActivatedRoute,
     private readonly _organizationService: OrganizationService,
-    @Inject(baseUrl) private readonly _baseUrl: string,
     private readonly _router: Router
   ) { }
 

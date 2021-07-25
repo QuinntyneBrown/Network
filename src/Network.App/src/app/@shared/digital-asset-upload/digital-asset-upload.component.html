@@ -1,13 +1,12 @@
-
-<ng-container *ngIf="digitalAssetId$ | async as digitalAssetId">
-    <div class="logo"  style="background-image:url('{{ baseUrl }}api/digitalasset/serve/{{ digitalAssetId }}')"></div>
+<ng-container *ngIf="digitalAssetId$ | async as digitalAssetId; else upload;">
+    <app-logo  [digitalAssetId]="digitalAssetId"></app-logo>
 </ng-container>
 
-<ng-container *ngIf="!(digitalAssetId$ | async)">
-    <button mat-fab class="upload-button">
-        <mat-icon>
-            {{ icon }}
-        </mat-icon>
-    </button>
-</ng-container>
+<ng-template #upload>
+  <button mat-fab class="digital-asset-upload__button--upload">
+    <mat-icon>
+        {{ icon }}
+    </mat-icon>
+  </button>
+</ng-template>
 

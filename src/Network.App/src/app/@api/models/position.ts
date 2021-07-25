@@ -1,5 +1,6 @@
 import { Company } from "./company";
 import { DatesEmployed } from "./dates-employed";
+import { Organization } from "./organization";
 import { Senority } from "./senority";
 import { Stack } from "./stack";
 
@@ -12,6 +13,7 @@ export type Position = {
     isCurrent?: boolean,
     stack?: Stack,
     senority?: Senority,
-    description?: string
+    description?: string,
+    organization?: Organization
 };
 
