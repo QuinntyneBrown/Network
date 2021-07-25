@@ -18,7 +18,10 @@ namespace Network.Api.Features
                 LinkedInProfile = profile.LinkedInProfile,
                 AvatarDigitalAssetId = profile.AvatarDigitalAssetId,
                 Created = profile.Created,
-                Experience = profile.Experience?.Select(x => x?.ToDto()).ToList()
+                Experience = profile.Experience?.Select(x => x?.ToDto()).ToList(),
+                CurrentPosition = profile.CurrentPosition?.ToDto(),
+                Technologies = profile.Technologies.Select(x => x.ToDto()).ToList(),
+                ProfileTechnologyies = profile.ProfileTechnologies.Select(x => x.ToDto()).ToList()
             };
         }
     }

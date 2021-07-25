@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using Network.Api.Models;
 
 namespace Network.Api.Features
@@ -9,9 +10,13 @@ namespace Network.Api.Features
         {
             return new()
             {
-                TechnologyId = technology.TechnologyId
+                TechnologyId = technology.TechnologyId,
+                Name = technology.Name,
+                LedBy = technology.LedBy,
+                LogoDigitalAssetId = technology.LogoDigitalAssetId,
+                Description = technology.Description,
+                Profiles = technology.Profiles.Select(x => x.ToDto()).ToList()
             };
         }
-
     }
 }

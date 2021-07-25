@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Network.Api.Data;
 
 namespace Network.Api.Migrations
 {
     [DbContext(typeof(NetworkDbContext))]
-    partial class NetworkDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210725115806_TechnologyRelationships")]
+    partial class TechnologyRelationships
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -263,9 +265,6 @@ namespace Network.Api.Migrations
                     b.Property<Guid>("ProfileTechnologyId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<int>("YearsExperience")
-                        .HasColumnType("int");
-
                     b.HasKey("TechnologyId", "ProfileId");
 
                     b.HasIndex("ProfileId");
@@ -302,18 +301,6 @@ namespace Network.Api.Migrations
                     b.Property<Guid>("TechnologyId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("Description")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("LedBy")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<Guid>("LogoDigitalAssetId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("TechnologyId");
 

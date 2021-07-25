@@ -1,5 +1,7 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Linq;
 
 namespace Network.Api.Models
 {
@@ -13,6 +15,13 @@ namespace Network.Api.Models
         public string GithubProfile { get; private set; }
         public string LinkedInProfile { get; private set; }
         public string Phone { get; private set; }
+        public List<Technology> Technologies { get; private set; } = new();
+        public List<ProfileTechnology> ProfileTechnologies { get; private set; } = new();
+
+        [NotMapped]
+        public Position CurrentPosition => Experience
+            .Where(x => x.DatesEmployed?.EndDate == null)
+            .FirstOrDefault();
         public List<ProfileNote> ProfileNotes { get; set; } = new();
         public List<Position> Experience { get; set; } = new();
         public DateTime Created { get; private set; } = DateTime.UtcNow;

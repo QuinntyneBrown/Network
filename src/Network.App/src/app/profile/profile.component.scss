@@ -1,5 +1,12 @@
 :host {
 
+  app-bento-box {
+    app-digital-asset-upload,
+    .g-title {
+      margin:0;
+    }
+  }
+
   app-digital-asset-upload {
     display: block;
     margin-bottom: 16px;
@@ -14,11 +21,24 @@
   [main] {
     display: grid;
     grid-template-columns: auto 1fr;
-    gap:20px;
+    column-gap: 30px;
+    row-gap:10px;
     .g-actions {
       grid-column: 1/3;
     }
 
+    app-digital-asset-upload {
+      grid-row: 1 / end;
+    }
+
+    .profile__main__content {
+      display: grid;
+      place-items: center start;
+    }
+
+    .g-field {
+      grid-column: 2;
+    }
     .profile__firstname-lastname-fields {
       display: grid;
       column-gap:20px;

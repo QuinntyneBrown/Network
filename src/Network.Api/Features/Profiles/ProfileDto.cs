@@ -15,6 +15,9 @@ namespace Network.Api.Features
         public string LinkedInProfile { get; set; }
         public DateTime Created { get; set; }
         public List<PositionDto> Experience { get; set; } = new();
+        public PositionDto CurrentPosition { get; set; }
+        public List<TechnologyDto> Technologies { get; set; }
+        public List<ProfileTechnologyDto> ProfileTechnologyies { get; set; }
 
     }
 }

@@ -39,7 +39,11 @@ namespace Network.Api.Features
 
             public async Task<Response> Handle(Request request, CancellationToken cancellationToken)
             {
-                var technology = new Technology();
+                var technology = new Technology(
+                    request.Technology.Name,
+                    request.Technology.LedBy,
+                    request.Technology.LogoDigitalAssetId
+                    );
 
                 _context.Technologies.Add(technology);
 
