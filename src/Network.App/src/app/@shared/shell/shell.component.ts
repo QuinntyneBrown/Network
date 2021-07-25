@@ -1,6 +1,6 @@
 import { DOCUMENT } from '@angular/common';
 import { ChangeDetectorRef, Component, Inject, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { NavigationService } from '@core';
 import { Observable, of } from 'rxjs';
 
@@ -18,10 +18,19 @@ export class ShellComponent {
     private readonly _activatedRoute: ActivatedRoute,
     private readonly _navigationService: NavigationService,
     @Inject(DOCUMENT) private readonly _document: Document,
+    private readonly _router: Router,
     private readonly _changeDetectorRef: ChangeDetectorRef
   ) { }
 
   public handleTitleClick() {
     this._navigationService.redirectToPublicDefault();
+  }
+
+  public handleHomeClick() {
+    this._router.navigate(["/"]);
+  }
+
+  public handleOrganizationClick() {
+    this._router.navigate(["/","organization"]);
   }
 }

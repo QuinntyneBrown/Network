@@ -15,7 +15,14 @@ namespace Network.Api.Interfaces
         DbSet<Note> Notes { get; }
         DbSet<ProfileNote> ProfileNotes { get; }
         DbSet<DigitalAsset> DigitalAssets { get; }
+        DbSet<Technology> Technologies { get; }
+        DbSet<OrganizationTechnology> OrganizationTechnologies { get; }
+        DbSet<ProfileTechnology> ProfileTechnologies { get; }
+        DbSet<Team> Teams { get; }
+        DbSet<TeamTechnology> TeamTechnologies { get; }
+        DbSet<OrganizationTeam> OrganizationTeams { get; }
+        DbSet<CompanyTeam> CompanyTeams { get; }
         Task<int> SaveChangesAsync(CancellationToken cancellationToken);
-
+        
     }
 }

@@ -40,6 +40,17 @@ namespace Network.Api.Migrations
                     b.ToTable("Companies");
                 });
 
+            modelBuilder.Entity("Network.Api.Models.CompanyTeam", b =>
+                {
+                    b.Property<Guid>("CompanyTeamId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("CompanyTeamId");
+
+                    b.ToTable("CompanyTeams");
+                });
+
             modelBuilder.Entity("Network.Api.Models.DigitalAsset", b =>
                 {
                     b.Property<Guid>("DigitalAssetId")
@@ -91,12 +102,37 @@ namespace Network.Api.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<Guid?>("LogoDigitalAssetId")
+                        .HasColumnType("uniqueidentifier");
+
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("OrganizationId");
 
                     b.ToTable("Organizations");
+                });
+
+            modelBuilder.Entity("Network.Api.Models.OrganizationTeam", b =>
+                {
+                    b.Property<Guid>("OrganizationTeamId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("OrganizationTeamId");
+
+                    b.ToTable("OrganizationTeams");
+                });
+
+            modelBuilder.Entity("Network.Api.Models.OrganizationTechnology", b =>
+                {
+                    b.Property<Guid>("OrganizationTechnologyId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("OrganizationTechnologyId");
+
+                    b.ToTable("OrganizationTechnologies");
                 });
 
             modelBuilder.Entity("Network.Api.Models.Position", b =>
@@ -190,6 +226,50 @@ namespace Network.Api.Migrations
                     b.HasIndex("ProfileId");
 
                     b.ToTable("ProfileNotes");
+                });
+
+            modelBuilder.Entity("Network.Api.Models.ProfileTechnology", b =>
+                {
+                    b.Property<Guid>("ProfileTechnologyId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("ProfileTechnologyId");
+
+                    b.ToTable("ProfileTechnologies");
+                });
+
+            modelBuilder.Entity("Network.Api.Models.Team", b =>
+                {
+                    b.Property<Guid>("TeamId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("TeamId");
+
+                    b.ToTable("Teams");
+                });
+
+            modelBuilder.Entity("Network.Api.Models.TeamTechnology", b =>
+                {
+                    b.Property<Guid>("TeamTechnologyId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("TeamTechnologyId");
+
+                    b.ToTable("TeamTechnologies");
+                });
+
+            modelBuilder.Entity("Network.Api.Models.Technology", b =>
+                {
+                    b.Property<Guid>("TechnologyId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("TechnologyId");
+
+                    b.ToTable("Technologies");
                 });
 
             modelBuilder.Entity("Network.Api.Models.Company", b =>

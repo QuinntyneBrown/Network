@@ -39,7 +39,9 @@ namespace Network.Api.Features
 
             public async Task<Response> Handle(Request request, CancellationToken cancellationToken)
             {
-                var organization = new Organization();
+                var organization = new Organization(
+                    request.Organization.Name,
+                    request.Organization.LogoDigitalAssetId);
 
                 _context.Organizations.Add(organization);
 

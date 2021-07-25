@@ -1,5 +1,5 @@
-using System;
 using Network.Api.Models;
+using System.Linq;
 
 namespace Network.Api.Features
 {
@@ -9,7 +9,10 @@ namespace Network.Api.Features
         {
             return new()
             {
-                OrganizationId = organization.OrganizationId
+                OrganizationId = organization.OrganizationId,
+                LogoDigitalAssetId = organization.LogoDigitalAssetId,
+                Name = organization.Name,
+                Companies = organization.Companies.Select(x => x.ToDto()).ToList()
             };
         }
 

@@ -34,6 +34,13 @@
     "Location",
     "Note",
     "ProfileNote",
-    "DigitalAsset"
+    "DigitalAsset",
+    "Technology",
+    "OrganizationTechnology",
+    "ProfileTechnology",
+    "Team",
+    "TeamTechnology",
+    "OrganizationTeam",
+    "CompanyTeam"
   ]
 }

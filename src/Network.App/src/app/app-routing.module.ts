@@ -6,7 +6,8 @@ const routes: Routes = [
   Route.withShell([
     { path: '', redirectTo: 'landing', pathMatch: 'full' },
     { path: 'landing', loadChildren: () => import('./landing/landing.module').then(m => m.LandingModule) },
-    { path: 'profile', loadChildren: () => import('./profile/profile.module').then(m => m.ProfileModule) }
+    { path: 'profile', loadChildren: () => import('./profile/profile.module').then(m => m.ProfileModule) },
+    { path: 'organization', loadChildren: () => import('./organization/organization.module').then(m => m.OrganizationModule) }
   ])
 ];
 

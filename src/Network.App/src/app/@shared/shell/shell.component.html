@@ -1,9 +1,25 @@
 <ng-container *ngIf="vm$ | async as vm">
   <mat-drawer-container>
     <mat-drawer #drawer mode="over" class="g-drawer">
+      <div class="mat-drawer__close-button-container">
+        <button mat-icon-button (click)="drawer.close()">
+          <mat-icon>
+            close
+          </mat-icon>
+        </button>
+      </div>
+      <mat-divider></mat-divider>
+      <ul>
+        <li>
+          <a cdkFocusInitial (click)="handleHomeClick(); drawer.close();">HOME</a>
+        </li>
+        <li>
+          <a (click)="handleOrganizationClick(); drawer.close();">ORGANIZATIONS</a>
+        </li>
+      </ul>
     </mat-drawer>
 
-    <app-header (titleClick)="handleTitleClick()" (menuClick)="drawer.open()"></app-header>
+    <app-header (titleClick)="handleTitleClick();" (menuClick)="drawer.open()"></app-header>
     <main>
       <router-outlet></router-outlet>
     </main>
