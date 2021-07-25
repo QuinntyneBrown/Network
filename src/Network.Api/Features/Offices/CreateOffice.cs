@@ -40,7 +40,7 @@ namespace Network.Api.Features
             public async Task<Response> Handle(Request request, CancellationToken cancellationToken)
             {
                 var office = new Office(
-                    request.Office.OrganizationId,
+                    request.Office.OrganizationId.Value,
                     Address.Create(
                         request.Office.Address.Street,
                         request.Office.Address.City,

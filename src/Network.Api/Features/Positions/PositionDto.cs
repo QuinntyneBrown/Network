@@ -8,8 +8,10 @@ namespace Network.Api.Features
         public Guid? PositionId { get; set; }
         public string Title { get; set; }
         public PositionType PositionType { get; set; }
-        public Guid? CompanyId { get; set; }
-        public CompanyDto Company { get; set; }
+        public Guid? OfficeId { get; set; }
+        public OfficeDto Office { get; set; }
+        public Guid? OrganizationId { get; set; }
+        public OrganizationDto Organization { get; set; }
         public DatesEmployedDto DatesEmployed { get; set; }
         public bool IsCurrent { get; set; }
         public Stack Stack { get; set; }

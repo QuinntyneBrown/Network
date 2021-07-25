@@ -9,7 +9,7 @@ namespace Network.Api.Features
         {
             return new ()
             {
-                OfficeId = office.OfficeId
+                OfficeId = office?.OfficeId
             };
         }
         

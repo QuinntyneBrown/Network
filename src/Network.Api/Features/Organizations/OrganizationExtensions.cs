@@ -9,10 +9,10 @@ namespace Network.Api.Features
         {
             return new()
             {
-                OrganizationId = organization.OrganizationId,
-                LogoDigitalAssetId = organization.LogoDigitalAssetId,
-                Name = organization.Name,
-                Companies = organization.Companies.Select(x => x.ToDto()).ToList()
+                OrganizationId = organization?.OrganizationId,
+                LogoDigitalAssetId = organization?.LogoDigitalAssetId,
+                Name = organization?.Name,
+                Companies = organization?.Companies.Select(x => x.ToDto()).ToList()
             };
         }
 

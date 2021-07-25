@@ -39,7 +39,9 @@ namespace Network.Api.Features
 
             public async Task<Response> Handle(Request request, CancellationToken cancellationToken)
             {
-                var position = new Position(request.Position.Title);
+                var position = new Position(
+                    request.Position.OrganizationId,
+                    request.Position.Title);
 
                 _context.Positions.Add(position);
 

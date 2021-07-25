@@ -1,7 +1,7 @@
 import { Component, Inject } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { PositionService, ProfileService } from '@api';
+import { ProfileService } from '@api';
 import { BehaviorSubject, Subject } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
 
@@ -18,6 +18,7 @@ export class ExperienceModalComponent {
     map(profileId => {
       return {
         form: new FormGroup({
+          organizationId: new FormControl(null,[Validators.required]),
           profileId: new FormControl(profileId,[Validators.required]),
           title: new FormControl(null,[])
         })
@@ -36,8 +37,6 @@ export class ExperienceModalComponent {
   }
 
   public handleSaveClick(vm) {
-    alert(vm.form.value.title);
-
     this._profileService.createExperience({ profileId: this.profileId, position: vm.form.value })
     .pipe(
       tap(x => this._dialogRef.close())

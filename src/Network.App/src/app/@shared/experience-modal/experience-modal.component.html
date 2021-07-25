@@ -10,6 +10,7 @@
   </button>
 
   <form [formGroup]="vm.form">
+    <app-organization-select formControlName="organizationId"></app-organization-select>
     <mat-form-field appearance="outline" class="g-form-field">
       <mat-label>Title</mat-label>
       <input matInput formControlName="title" cdkFocusInitial>

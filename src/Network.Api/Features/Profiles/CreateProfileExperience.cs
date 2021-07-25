@@ -5,6 +5,7 @@ using Network.Api.Core;
 using Network.Api.Interfaces;
 using System;
 using Microsoft.EntityFrameworkCore;
+using Network.Api.Models;
 
 namespace Network.Api.Features
 {
@@ -35,7 +36,7 @@ namespace Network.Api.Features
                     .SingleAsync(x => x.ProfileId == request.ProfileId);
 
                 profile.Experience.Add(
-                    new(request.Position.Title)
+                    new Position(request.Position.OrganizationId.Value, request.Position.Title)
                     );
 
                 await _context.SaveChangesAsync(cancellationToken);

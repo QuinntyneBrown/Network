@@ -33,6 +33,7 @@ namespace Network.Api.Features
                 {
                     Profile = (await _context.Profiles
                     .Include(x => x.Experience)
+                    .ThenInclude(x => x.Organization)
                     .SingleOrDefaultAsync(x => x.ProfileId == request.ProfileId)).ToDto()
                 };
             }
