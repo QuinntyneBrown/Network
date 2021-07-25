@@ -22,8 +22,8 @@ namespace Network.Api.Data
 
             if (profile == null)
             {
-                context.Profiles.Add(new (
-                    "Quinntyne", "Brown", 
+                context.Profiles.Add(new(
+                    "Quinntyne", "Brown",
                     "quinntynebrown@gmail.com",
                     "https://github.com/QuinntyneBrown",
                     "https://www.linkedin.com/in/quinntynebrown/"));

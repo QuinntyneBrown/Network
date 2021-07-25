@@ -18,8 +18,9 @@ namespace Network.Api.Features
             }
         }
 
-        public class Request : IRequest<Response> { 
-            public ProfileDto Profile { get; set; }        
+        public class Request : IRequest<Response>
+        {
+            public ProfileDto Profile { get; set; }
         }
 
         public class Response
@@ -31,11 +32,13 @@ namespace Network.Api.Features
         {
             private readonly INetworkDbContext _context;
 
-            public Handler(INetworkDbContext context){
+            public Handler(INetworkDbContext context)
+            {
                 _context = context;
             }
 
-            public async Task<Response> Handle(Request request, CancellationToken cancellationToken) {
+            public async Task<Response> Handle(Request request, CancellationToken cancellationToken)
+            {
 
                 var profile = await _context.Profiles.SingleAsync(x => x.ProfileId == request.Profile.ProfileId);
 

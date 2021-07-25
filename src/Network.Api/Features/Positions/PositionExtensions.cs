@@ -15,7 +15,7 @@ namespace Network.Api.Features
                 PositionId = position?.PositionId,
                 Title = position?.Title,
                 IsCurrent = position.IsCurrent,
-                DatesEmployed =  new DatesEmployedDto { StartDate = position.DatesEmployed?.StartDate, EndDate = position.DatesEmployed?.EndDate },
+                DatesEmployed = new DatesEmployedDto { StartDate = position.DatesEmployed?.StartDate, EndDate = position.DatesEmployed?.EndDate },
                 OfficeId = position.OfficeId,
                 Office = position.Office.ToDto(),
                 OrganizationId = position.OrganizationId,

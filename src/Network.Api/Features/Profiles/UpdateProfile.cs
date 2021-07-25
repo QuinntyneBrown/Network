@@ -50,7 +50,7 @@ namespace Network.Api.Features
 
                 await _context.SaveChangesAsync(cancellationToken);
 
-                return new ()
+                return new()
                 {
                     Profile = profile.ToDto()
                 };

@@ -10,45 +10,45 @@ namespace Network.Api.Features
 {
     public class UpdateCompanyTeam
     {
-        public class Validator: AbstractValidator<Request>
+        public class Validator : AbstractValidator<Request>
         {
             public Validator()
             {
                 RuleFor(request => request.CompanyTeam).NotNull();
                 RuleFor(request => request.CompanyTeam).SetValidator(new CompanyTeamValidator());
             }
-        
+
         }
 
-        public class Request: IRequest<Response>
+        public class Request : IRequest<Response>
         {
             public CompanyTeamDto CompanyTeam { get; set; }
         }
 
-        public class Response: ResponseBase
+        public class Response : ResponseBase
         {
             public CompanyTeamDto CompanyTeam { get; set; }
         }
 
-        public class Handler: IRequestHandler<Request, Response>
+        public class Handler : IRequestHandler<Request, Response>
         {
             private readonly INetworkDbContext _context;
-        
+
             public Handler(INetworkDbContext context)
                 => _context = context;
-        
+
             public async Task<Response> Handle(Request request, CancellationToken cancellationToken)
             {
                 var companyTeam = await _context.CompanyTeams.SingleAsync(x => x.CompanyTeamId == request.CompanyTeam.CompanyTeamId);
-                
+
                 await _context.SaveChangesAsync(cancellationToken);
-                
+
                 return new Response()
                 {
                     CompanyTeam = companyTeam.ToDto()
                 };
             }
-            
+
         }
     }
 }

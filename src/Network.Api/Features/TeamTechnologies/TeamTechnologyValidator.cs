@@ -2,5 +2,5 @@ using FluentValidation;
 
 namespace Network.Api.Features
 {
-    public class TeamTechnologyValidator: AbstractValidator<TeamTechnologyDto> { }
+    public class TeamTechnologyValidator : AbstractValidator<TeamTechnologyDto> { }
 }

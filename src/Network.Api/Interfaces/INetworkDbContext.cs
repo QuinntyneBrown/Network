@@ -24,6 +24,6 @@ namespace Network.Api.Interfaces
         DbSet<CompanyTeam> CompanyTeams { get; }
         DbSet<Office> Offices { get; }
         Task<int> SaveChangesAsync(CancellationToken cancellationToken);
-        
+
     }
 }

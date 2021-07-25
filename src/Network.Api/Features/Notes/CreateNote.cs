@@ -1,10 +1,10 @@
 using FluentValidation;
 using MediatR;
-using System.Threading;
-using System.Threading.Tasks;
-using Network.Api.Models;
 using Network.Api.Core;
 using Network.Api.Interfaces;
+using Network.Api.Models;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace Network.Api.Features
 {
@@ -45,7 +45,7 @@ namespace Network.Api.Features
 
                 await _context.SaveChangesAsync(cancellationToken);
 
-                return new Response()
+                return new()
                 {
                     Note = note.ToDto()
                 };

@@ -11,12 +11,13 @@ namespace Network.Api.Features
 {
     public class CreateProfileExperience
     {
-        public class Request : IRequest<Response> {
+        public class Request : IRequest<Response>
+        {
             public Guid ProfileId { get; set; }
             public PositionDto Position { get; set; }
         }
 
-        public class Response: ResponseBase
+        public class Response : ResponseBase
         {
             public ProfileDto Profile { get; set; }
         }
@@ -25,18 +26,20 @@ namespace Network.Api.Features
         {
             private readonly INetworkDbContext _context;
 
-            public Handler(INetworkDbContext context){
+            public Handler(INetworkDbContext context)
+            {
                 _context = context;
             }
 
-            public async Task<Response> Handle(Request request, CancellationToken cancellationToken) {
+            public async Task<Response> Handle(Request request, CancellationToken cancellationToken)
+            {
 
                 var profile = await _context.Profiles
                     .Include(x => x.Experience)
                     .SingleAsync(x => x.ProfileId == request.ProfileId);
 
                 profile.Experience.Add(
-                    new Position(request.Position.OrganizationId.Value, request.Position.Title)
+                    new Position(request.Position.OrganizationId, request.Position.Title)
                     );
 
                 await _context.SaveChangesAsync(cancellationToken);

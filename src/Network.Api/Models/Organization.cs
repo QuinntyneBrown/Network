@@ -5,7 +5,7 @@ namespace Network.Api.Models
 {
     public class Organization
     {
-        public Guid OrganizationId { get; private set; }       
+        public Guid OrganizationId { get; private set; }
         public string Name { get; private set; }
         public List<Company> Companies { get; private set; } = new();
         public List<Office> Offices { get; private set; } = new();

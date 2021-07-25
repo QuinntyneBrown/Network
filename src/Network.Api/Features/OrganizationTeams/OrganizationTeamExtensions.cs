@@ -7,11 +7,11 @@ namespace Network.Api.Features
     {
         public static OrganizationTeamDto ToDto(this OrganizationTeam organizationTeam)
         {
-            return new ()
+            return new()
             {
                 OrganizationTeamId = organizationTeam.OrganizationTeamId
             };
         }
-        
+
     }
 }

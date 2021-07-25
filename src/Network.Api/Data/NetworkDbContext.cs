@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Network.Api.Data
 {
-    public class NetworkDbContext: DbContext, INetworkDbContext
+    public class NetworkDbContext : DbContext, INetworkDbContext
     {
         public DbSet<Profile> Profiles { get; private set; }
         public DbSet<Position> Positions { get; private set; }
@@ -23,14 +23,14 @@ namespace Network.Api.Data
         public DbSet<CompanyTeam> CompanyTeams { get; private set; }
         public DbSet<Office> Offices { get; private set; }
         public NetworkDbContext(DbContextOptions options)
-            :base(options) { }
+            : base(options) { }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-            
+
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(NetworkDbContext).Assembly);
         }
-        
+
     }
 }
