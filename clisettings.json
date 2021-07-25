@@ -42,6 +42,7 @@
     "TeamTechnology",
     "OrganizationTeam",
     "CompanyTeam",
-    "Office"
+    "Office",
+    "Skill"
   ]
 }

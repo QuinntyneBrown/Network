@@ -13,6 +13,7 @@ export * from './profile-note';
 export * from './profile-technology';
 export * from './profile';
 export * from './senority';
+export * from './skill';
 export * from './stack';
 export * from './team-technology';
 export * from './team';

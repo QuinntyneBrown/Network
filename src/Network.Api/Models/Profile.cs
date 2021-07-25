@@ -16,6 +16,7 @@ namespace Network.Api.Models
         public string LinkedInProfile { get; private set; }
         public string Phone { get; private set; }
         public List<Technology> Technologies { get; private set; } = new();
+        public List<Skill> Skills { get; private set; } = new();
         public List<ProfileTechnology> ProfileTechnologies { get; private set; } = new();
 
         [NotMapped]

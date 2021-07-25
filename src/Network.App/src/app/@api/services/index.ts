@@ -11,6 +11,7 @@ export * from './position.service';
 export * from './profile-note.service';
 export * from './profile-technology.service';
 export * from './profile.service';
+export * from './skill.service';
 export * from './team-technology.service';
 export * from './team.service';
 export * from './technology.service';

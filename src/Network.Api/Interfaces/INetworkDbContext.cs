@@ -23,7 +23,8 @@ namespace Network.Api.Interfaces
         DbSet<OrganizationTeam> OrganizationTeams { get; }
         DbSet<CompanyTeam> CompanyTeams { get; }
         DbSet<Office> Offices { get; }
+        DbSet<Skill> Skills { get; }
         Task<int> SaveChangesAsync(CancellationToken cancellationToken);
-
+        
     }
 }

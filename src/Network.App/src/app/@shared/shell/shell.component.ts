@@ -33,4 +33,12 @@ export class ShellComponent {
   public handleOrganizationClick() {
     this._router.navigate(["/","organization"]);
   }
+
+  public handleTechnologiesClick() {
+    this._router.navigate(["/","technology"]);
+  }
+
+  public handleSkillsClick() {
+    this._router.navigate(["/","skill"]);
+  }
 }

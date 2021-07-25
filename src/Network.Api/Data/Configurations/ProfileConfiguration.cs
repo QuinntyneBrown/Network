@@ -18,6 +18,10 @@ namespace Network.Api.Data.Configurations
                 {
                     j.HasKey(t => new { t.TechnologyId, t.ProfileId });
                 });
+
+            builder
+                .HasMany(p => p.Skills)
+                .WithMany(s => s.Profiles);                
         }        
     }
 }
