@@ -1,4 +1,3 @@
-using System;
 using Network.Api.Models;
 
 namespace Network.Api.Features
@@ -9,7 +8,8 @@ namespace Network.Api.Features
         {
             return new()
             {
-                OfficeId = office?.OfficeId
+                OfficeId = office?.OfficeId,
+                Address = office.Address?.ToDto()
             };
         }
 
