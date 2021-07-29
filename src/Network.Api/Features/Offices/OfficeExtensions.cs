@@ -9,9 +9,8 @@ namespace Network.Api.Features
             return new()
             {
                 OfficeId = office?.OfficeId,
-                Address = office.Address?.ToDto()
+                Address = office?.Address?.ToDto()
             };
         }
-
     }
 }

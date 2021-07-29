@@ -1,5 +1,7 @@
-<h2>Experience</h2>
-<button mat-raised-button class="g-create-button" (click)="handleCreateClick()">Create</button>
+<div class="experience__header">
+  <h2>Experience</h2>
+  <button mat-raised-button class="g-create-button" (click)="handleCreateClick()">Create</button>
+</div>
 
 <div class="experience__grid">
   <app-position *ngFor="let position of positions" [position]="position" (editClick)="handleEditClick($event)">

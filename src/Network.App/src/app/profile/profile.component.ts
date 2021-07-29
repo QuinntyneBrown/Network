@@ -5,6 +5,7 @@ import { ProfileService } from '@api';
 import { NavigationService } from '@core';
 import { of, Subject } from 'rxjs';
 import { map, startWith, switchMap, takeUntil, tap } from 'rxjs/operators';
+import { ProfileContextService } from './profile-context.service';
 
 export enum ProfileState {
   Edit,
@@ -15,7 +16,10 @@ export enum ProfileState {
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
-  styleUrls: ['./profile.component.scss']
+  styleUrls: ['./profile.component.scss'],
+  providers: [
+    ProfileContextService
+  ]
 })
 export class ProfileComponent  {
 
@@ -37,8 +41,10 @@ export class ProfileComponent  {
       avatarFormControl: new FormControl(null,[])
     };
 
-    return this._activatedRoute.paramMap
+    return this._profileContextService.refresh$
     .pipe(
+      startWith(true),
+      switchMap(_ => this._activatedRoute.paramMap),
       map(paramMap => {
         if(paramMap.get("profileId")) {
           return Object.assign(vm,{ state: ProfileState.View, profileId: paramMap.get("profileId") });
@@ -93,7 +99,8 @@ export class ProfileComponent  {
     private readonly _activatedRoute: ActivatedRoute,
     private readonly _profileService: ProfileService,
     private readonly _navigationService: NavigationService,
-    private readonly _router: Router
+    private readonly _router: Router,
+    private readonly _profileContextService: ProfileContextService
   ) { }
 
   public handleEditClick(vm) {

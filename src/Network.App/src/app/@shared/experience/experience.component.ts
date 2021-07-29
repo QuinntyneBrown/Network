@@ -1,10 +1,11 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Optional } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Position } from '@api';
 import { ExperienceModalComponent } from '@shared/experience-modal';
 import { PositionModalComponent } from '@shared/position-modal';
 import { Subject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
+import { takeUntil, tap } from 'rxjs/operators';
+import { ProfileContextService } from 'src/app/profile/profile-context.service';
 
 @Component({
   selector: 'app-experience',
@@ -17,7 +18,8 @@ export class ExperienceComponent {
   @Input() public readonly profileId!: string;
 
   constructor(
-    private readonly _dialog: MatDialog
+    private readonly _dialog: MatDialog,
+    private readonly _profileContextService: ProfileContextService
   ) { }
 
   public handleCreateClick() {
@@ -27,7 +29,8 @@ export class ExperienceComponent {
     })
     .afterClosed()
     .pipe(
-      takeUntil(this._destroyed$)
+      takeUntil(this._destroyed$),
+      tap(_ => this._profileContextService.refresh())
     )
     .subscribe();
   }

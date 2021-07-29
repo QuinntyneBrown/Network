@@ -1,8 +1,10 @@
-<h2>Notes</h2>
-<button mat-raised-button class="g-create-button" (click)="handleCreateClick()">Create</button>
+<div class="notes__header">
+  <h2>Notes</h2>
+  <button mat-raised-button class="g-create-button" (click)="handleCreateClick()">Create</button>
+</div>
 
 <div>
-  <app-position *ngFor="let note of notes">
+  <app-note *ngFor="let note of notes">
 
-  </app-position>
+  </app-note>
 </div>
